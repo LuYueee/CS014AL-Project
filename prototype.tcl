@@ -1,22 +1,22 @@
-#####################################
+#################################
 #	CS014AL Project: Image Editor	#
-#	Window Prototype			#
-#	Yue,Lu				#
-#	10/04/2017			#
-#####################################
+#	Window Prototype			        #
+#	Yue,Lu				                #
+#	10/04/2017		                #
+#################################
 
-###10/04£º¸ù¾İÔ­ĞÍ²¼¾Ö£¬¼òµ¥µÄ¿ò¼Ü´î½¨###
+###10/04ï¼šæ ¹æ®åŸå‹å¸ƒå±€ï¼Œç®€å•çš„æ¡†æ¶æ­å»º###
 
 #name of window Image Editor
 wm title . "Image Editor"
 
 #Tool Bar 1
 frame .subpanel1 -background gray  -height 800 
-###ÕâÀï²»ÉèÖÃ-expand###
+###è¿™é‡Œä¸è®¾ç½®-expand###
 pack .subpanel1 -side left -fill both 
 label .subpanel1.label  -background gray  -text "" -width 5
 pack .subpanel1.label -side bottom
-###×îÅÔ±ßµÄ¹¤¾ßÀ¸£¬°´Å¥ÉèÖÃtop»á´ÓÉÏÍùÏÂÅÅ###
+###æœ€æ—è¾¹çš„å·¥å…·æ ï¼ŒæŒ‰é’®è®¾ç½®topä¼šä»ä¸Šå¾€ä¸‹æ’###
 #button .subpanel1.b1 -text "Button1"
 #pack .subpanel1.b1  -side top 
 #button .subpanel1.b2 -text "Button2"
@@ -25,14 +25,14 @@ pack .subpanel1.label -side bottom
 #Tool Bar 2
 frame .subpanel2 -background gray -height 800 -width 300
 pack .subpanel2 -side left -fill both -expand true
-###ÔÚÃ¿¸öframeµÄ×îµ×ÏÂ¼ÓÈëlabel°Ñframe´Ó×óµ½ÓÒ³ÅÆğÀ´###
-###width 40ÊÇ×îĞ¡»¯Ê±¹¤¾ßÀ¸µÄ³¤¶È£¨ºóÆÚĞèÒªµ÷Õû£©###
+###åœ¨æ¯ä¸ªframeçš„æœ€åº•ä¸‹åŠ å…¥labelæŠŠframeä»å·¦åˆ°å³æ’‘èµ·æ¥###
+###width 40æ˜¯æœ€å°åŒ–æ—¶å·¥å…·æ çš„é•¿åº¦ï¼ˆåæœŸéœ€è¦è°ƒæ•´ï¼‰###
 label .subpanel2.label  -background gray  -text "" -width 40
 pack .subpanel2.label -side bottom
 
 
 #Operation Field
-###×÷ÒµÇø###
+###ä½œä¸šåŒº###
 frame .mainpanel -background white -height 800 -width 1000
 pack .mainpanel -side left -fill both -expand true
 
