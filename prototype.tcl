@@ -1,8 +1,8 @@
 #################################
-#	CS014AL Project: Image Editor	#
-#	Window Prototype			        #
-#	Yue,Lu				                #
-#	10/04/2017		                #
+#	CS014AL Project: Image Editor	
+#	Window Prototype			        
+#	Yue,Lu				                
+#	10/04/2017		                
 #################################
 
 ###10/04：根据原型布局，简单的框架搭建###
