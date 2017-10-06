@@ -6,7 +6,7 @@
 ######################################
 
 ###10/04：根据原型布局，简单的框架搭建###
-###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z)###
+###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 
 #name of window Image Editor
 wm title . "Image Editor"
@@ -15,7 +15,20 @@ wm title . "Image Editor"
 ###76EEC6 
 ###528B8B
 
-#Tool Bar 1
+#XO-
+frame .top -background gray -height 50 -width 1700
+pack .top -side top -fill both -expand true
+### Maximize Minimize Exit###
+button .top.b1 -text "Button1" 
+pack .top.b1  -side right  -padx 10
+button .top.b2 -text "Button2" 
+pack .top.b2  -side right  -padx 10
+###label must be at the end of mainpanel code###
+label .top.label  -background gray  -text "" -width 226
+pack .mainpanel.label -side top
+
+
+#Menu Bar
 frame .subpanel1 -background #528B8B  -height 800 
 ###这里不设置-expand###
 pack .subpanel1 -side left -fill both 
