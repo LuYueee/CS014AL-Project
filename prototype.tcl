@@ -1,10 +1,3 @@
-######################################
-#	CS014AL Project: Image Editor	
-#	Window Prototype			        
-#	Yue,Lu				                
-#	10/04/2017		                
-######################################
-
 ###10/04：根据原型布局，简单的框架搭建###
 ###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 
@@ -71,10 +64,14 @@ pack .mainpanel -side left -fill both -expand true
 
 frame .mainpanel.bottom -background #528B8B  -width 1000
 pack .mainpanel.bottom -side bottom -fill both
-button .mainpanel.bottom.b1 -text "Button1" 
-pack .mainpanel.bottom.b1  -side right  -padx 10
-button .mainpanel.bottom.b2 -text "Button2" 
-pack .mainpanel.bottom.b2  -side right  -padx 10
+
+frame .mainpanel.bottom.ccc -background #528B8B -height 20
+pack .mainpanel.bottom.ccc -side bottom 
+button .mainpanel.bottom.ccc.b1 -text "Button1" 
+pack .mainpanel.bottom.ccc.b1  -side right  -padx 10
+button .mainpanel.bottom.ccc.b2 -text "Button2" 
+pack .mainpanel.bottom.ccc.b2  -side right  -padx 10
+
 
 ###label must be at the end of mainpanel code###
 label .mainpanel.label  -background white  -text "" -width 133
