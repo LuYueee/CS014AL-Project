@@ -17,7 +17,8 @@ wm title . "Image Editor"
 
 #XO-
 frame .top -background gray -height 50 -width 1700
-pack .top -side top -fill both -expand true
+pack .top -side top -fill both 
+###这里不设置-expand###
 ### Maximize Minimize Exit###
 button .top.b1 -text "Button1" 
 pack .top.b1  -side right  -padx 10
@@ -46,7 +47,21 @@ pack .subpanel2 -side left -fill both -expand true
 ###在每个frame的最底下加入label把frame从左到右撑起来###
 ###width 40是最小化时工具栏的长度（后期需要调整）###
 label .subpanel2.label  -background #76EEC6  -text "" -width 40
+
 pack .subpanel2.label -side bottom
+
+frame .subpanel2.but1
+button .subpanel2.but1.b1 -text "Submit1"
+grid .subpanel2.but1 -row 0 -column 0  -sticky e
+pack .subpanel2.but1 
+pack .subpanel2.but1.b1
+
+frame .subpanel2.but2
+button .subpanel2.but2.b2 -text "Submit2"
+grid .subpanel2.but2 -row 0 -column 1  -sticky e
+pack .subpanel2.but2 
+pack .subpanel2.but2.b2
+
 
 
 #Operation Field
