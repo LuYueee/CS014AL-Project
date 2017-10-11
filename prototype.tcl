@@ -26,7 +26,7 @@ button .top.b2 -text "Button2"
 pack .top.b2  -side right  -padx 10
 ###label must be at the end of mainpanel code###
 label .top.label  -background gray  -text "" -width 226
-pack .mainpanel.label -side top
+
 
 
 #Menu Bar
@@ -36,7 +36,8 @@ pack .subpanel1 -side left -fill both
 label .subpanel1.label  -background #528B8B  -text "" -width 5
 pack .subpanel1.label -side bottom
 ###最旁边的工具栏，按钮设置top会从上往下排###
-button .subpanel1.b1 -text "Button1" 
+button .subpanel1.b1 -text "Button1" -command {.subpanel2 config -bg gray}
+
 pack .subpanel1.b1  -side top  -pady 10
 button .subpanel1.b2 -text "Button2" 
 pack .subpanel1.b2  -side top  -pady 10
@@ -120,4 +121,3 @@ frame .subpanel3 -background #76EEC6 -height 800 -width 300
 pack .subpanel3 -side left -fill both -expand true
 label .subpanel3.label  -background #76EEC6  -text "" -width 40
 pack .subpanel3.label -side bottom
-
