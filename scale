@@ -1,0 +1,27 @@
+set score "Red : 0    Yellow : 0    Blue : 0"
+set red 0
+set yellow 0
+set blue 0
+
+#display in the buttom
+proc display {val} {
+global red yellow blue score
+set score [format {Red : %d    Yellow : %d    Blue : %d} $red $yellow $blue]
+}
+
+scale .red -label "Red" -variable red \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+scale .yellow -label "Yellow" -variable yellow \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+scale .blue -label "Blue" -variable blue \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+label .score -textvariable score
+
+grid .red -padx 2 -pady 2 -sticky w
+grid .yellow -padx 2 -pady 2 -sticky w
+grid .blue -padx 2 -pady 2 -sticky w
+grid .score -padx 2 -pady 2 -sticky w
+
