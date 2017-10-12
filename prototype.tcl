@@ -130,6 +130,15 @@ pack .subpanel3 -side left -fill both -expand true
 label .subpanel3.label  -background #76EEC6  -text "" -width 40
 pack .subpanel3.label -side bottom
 
+
+
+frame .subpanel3.ccc -background  #76EEC6 -height 20
+pack .subpanel3.ccc -side bottom -pady 20
+button .subpanel3.ccc.b1 -text "Button1" 
+pack .subpanel3.ccc.b1  -side right  -padx 10 
+button .subpanel3.ccc.b2 -text "Button2" 
+pack .subpanel3.ccc.b2  -side right  -padx 10
+
 set score "Red : 0    Yellow : 0    Blue : 0"
 set red 0
 set yellow 0
