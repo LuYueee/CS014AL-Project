@@ -5,8 +5,6 @@
 #	10/04/2017		                
 ######################################
 
-###10/04：根据原型布局，简单的框架搭建###
-###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 
 #name of window Image Editor
 wm title . "Image Editor"
@@ -60,6 +58,7 @@ pack .subpanel1.b8  -side top  -pady 10
 
 
 #Tool Bar 2
+
 frame .subpanel2 -background #76EEC6 -height 800 -width 300
 pack .subpanel2 -side left -fill both -expand true
 ###在每个frame的最底下加入label把frame从左到右撑起来###
@@ -98,6 +97,15 @@ pack .subpanel2.but3.b2  -side left
 frame .mainpanel -background white -height 800 -width 1000
 pack .mainpanel -side left -fill both -expand true
 
+frame .mainpanel.top -background white -width 1000
+pack .mainpanel.top -side top -fill both
+frame .mainpanel.top.ccc -background white -height 20
+pack .mainpanel.top.ccc -side bottom 
+button .mainpanel.top.ccc.b1 -text "Button1" 
+pack .mainpanel.top.ccc.b1  -side right  -padx 40
+button .mainpanel.top.ccc.b2 -text "Button2" 
+pack .mainpanel.top.ccc.b2  -side right  -padx 40
+
 frame .mainpanel.bottom -background #528B8B  -width 1000
 pack .mainpanel.bottom -side bottom -fill both
 
@@ -121,3 +129,30 @@ frame .subpanel3 -background #76EEC6 -height 800 -width 300
 pack .subpanel3 -side left -fill both -expand true
 label .subpanel3.label  -background #76EEC6  -text "" -width 40
 pack .subpanel3.label -side bottom
+
+set score "Red : 0    Yellow : 0    Blue : 0"
+set red 0
+set yellow 0
+set blue 0
+
+#display in the buttom
+proc display {val} {
+global red yellow blue score
+set score [format {Red : %d    Yellow : %d    Blue : %d} $red $yellow $blue]
+}
+
+scale .subpanel3.red -label "Red" -variable red -background #528B8B \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+scale .subpanel3.yellow -label "Yellow" -variable yellow -background #528B8B \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+scale .subpanel3.blue -label "Blue" -variable blue -background #528B8B \
+-length 5c -width .25c -from 0 -to 30 \
+-orient horizontal -command {display}
+label .subpanel3.score -background #76EEC6 -textvariable score
+
+pack .subpanel3.score -side bottom -padx 2 -pady 2 
+pack .subpanel3.red -side bottom -padx 2 -pady 2 
+pack .subpanel3.yellow -side bottom -padx 2 -pady 2 
+pack .subpanel3.blue -side bottom -padx 2 -pady 2 
