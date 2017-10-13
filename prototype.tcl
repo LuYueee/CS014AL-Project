@@ -7,49 +7,15 @@
 
 ###10/04：根据原型布局，简单的框架搭建###
 ###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
-###10/13-crate and distory windows###
+###10/13 : crate and distory windows && bind enter/leave event###
+###10/14 : Event: crate buttons& destroy buttons; fix size of main/sub window###
 
 
 
 #name of window Image Editor
 #wm title . "Image Editor"
 ###background color
-###76EEC6 
-###528B8B
 
-###sub window###
-set w .toolframe
-toplevel $w
-wm title $w "Tool Box"
-frame $w.subpanel -background #76EEC6 -height 800 -width 300
-pack $w.subpanel -side left -fill both 
-###在每个frame的最底下加入label把frame从左到右撑起来###
-###width 40是最小化时工具栏的长度（后期需要调整）###
-#label $w.subpanel.label  -background #76EEC6  -text "" -width 40
-#pack $w.subpanel.label -side bottom
-
-###[but] is sub frame of subpanel2###
-frame $w.subpanel.but1 -background #76EEC6 
-pack $w.subpanel.but1 -side top
-button $w.subpanel.but1.b1 -text "Button1"
-pack $w.subpanel.but1.b1  -side left  
-button $w.subpanel.but1.b2 -text "Button2"
-pack $w.subpanel.but1.b2  -side left  
-
-
-frame $w.subpanel.but2 -background #76EEC6 
-pack $w.subpanel.but2 -side top
-button $w.subpanel.but2.b1 -text "Button3"
-pack $w.subpanel.but2.b1  -side left  
-button $w.subpanel.but2.b2 -text "Button4"
-pack $w.subpanel.but2.b2  -side left  
-
-frame $w.subpanel.but3 -background #76EEC6 
-pack $w.subpanel.but3 -side top
-button $w.subpanel.but3.b1 -text "Button5"
-pack $w.subpanel.but3.b1  -side left  
-button $w.subpanel.but3.b2 -text "Button6"
-pack $w.subpanel.but3.b2  -side left 
 
 
 
@@ -76,14 +42,25 @@ label .subpanel1.label  -background #528B8B  -text "" -width 5
 pack .subpanel1.label -side bottom
 ###最旁边的工具栏，按钮设置top会从上往下排###
 button .subpanel1.b1 -text "Button1" -command {.subpanel2 config -bg gray}
-
+bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #528B8B;} 
+bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #76EEC6}
 pack .subpanel1.b1  -side top  -pady 10
+
+
 button .subpanel1.b2 -text "Button2" 
+bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #528B8B;} 
+bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #76EEC6}
 pack .subpanel1.b2  -side top  -pady 10
 
 button .subpanel1.b3 -text "Button3"
+bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #528B8B;} 
+bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #76EEC6}
 pack .subpanel1.b3  -side top  -pady 10
+
+
 button .subpanel1.b4 -text "Button4" 
+bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #528B8B;} 
+bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #76EEC6}
 pack .subpanel1.b4  -side top  -pady 10
 
 button .subpanel1.b5 -text "Button5" 
@@ -108,7 +85,11 @@ label .subpanel2.label  -background #76EEC6  -text "" -width 40
 pack .subpanel2.label -side bottom
 
 ###[but] is sub frame of subpanel2###
+
 frame .subpanel2.but1 -background #76EEC6 
+#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
+#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
+
 pack .subpanel2.but1 -side top
 button .subpanel2.but1.b1 -text "Button1"
 pack .subpanel2.but1.b1  -side left  
@@ -175,9 +156,37 @@ pack .subpanel3.label -side bottom
 
 frame .subpanel3.ccc -background  #76EEC6 -height 20
 pack .subpanel3.ccc -side bottom -pady 20
-button .subpanel3.ccc.b1 -text "Button1" -command "focus $w"
+button .subpanel3.ccc.b1 -text "Button1" -command {
+set w .toolframe;
+toplevel $w;
+wm title $w "Tool Box";
+frame $w.subpanel -background #76EEC6 -height 800 -width 300;
+pack $w.subpanel -side left -fill both ;
+
+frame $w.subpanel.but1 -background #76EEC6 ;
+pack $w.subpanel.but1 -side top;
+button $w.subpanel.but1.b1 -text "Button1";
+pack $w.subpanel.but1.b1  -side left  ;
+button $w.subpanel.but1.b2 -text "Button2";
+pack $w.subpanel.but1.b2  -side left  ;
+
+
+frame $w.subpanel.but2 -background #76EEC6 ;
+pack $w.subpanel.but2 -side top;
+button $w.subpanel.but2.b1 -text "Button3";
+pack $w.subpanel.but2.b1  -side left  ;
+button $w.subpanel.but2.b2 -text "Button4";
+pack $w.subpanel.but2.b2  -side left  ;
+
+frame $w.subpanel.but3 -background #76EEC6 ;
+pack $w.subpanel.but3 -side top;
+button $w.subpanel.but3.b1 -text "Button5";
+pack $w.subpanel.but3.b1  -side left  ;
+button $w.subpanel.but3.b2 -text "Button6";
+pack $w.subpanel.but3.b2  -side left;
+}
 pack .subpanel3.ccc.b1  -side right  -padx 10 
-button .subpanel3.ccc.b2 -text "Button2"  -command "destroy $w"
+button .subpanel3.ccc.b2 -text "Button2"  -command "destroy .toolframe"
 pack .subpanel3.ccc.b2  -side right  -padx 10
 
 set score "Red : 0    Yellow : 0    Blue : 0"
