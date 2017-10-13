@@ -5,15 +5,20 @@
 #	10/04/2017		                
 ######################################
 
-###10/04：根据原型布局，简单的框架搭建###
+###10/04：根据原型布局，??的框架搭建###
 ###10/06：Add a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 ###10/13 : crate and distory windows && bind enter/leave event###
-###10/14 : Event: crate buttons& destroy buttons; fix size of main/sub window###
+###10/13(2) : Mouse Event & - Command (crate buttons & destroy buttons); fix size of main/sub window (not complete)###
 
 
 
 #name of window Image Editor
-#wm title . "Image Editor"
+
+wm title . "Image Editor"
+#wm maxsize . 1000 800
+#wm minsize . 1000 800
+#wm geometry . 1500*800+100+100
+
 ###background color
 
 
@@ -23,7 +28,7 @@
 #XO-
 frame .top -background gray -height 50 -width 1700
 pack .top -side top -fill both 
-###这里不设置-expand###
+###?里不?置-expand###
 ### Maximize Minimize Exit###
 button .top.b1 -text "Button1" -command "exit"
 pack .top.b1  -side right  -padx 10
@@ -36,23 +41,113 @@ label .top.label  -background gray  -text "" -width 226
 
 #Menu Bar
 frame .subpanel1 -background #528B8B  -height 800 
-###这里不设置-expand###
+###?里不?置-expand###
 pack .subpanel1 -side left -fill both 
 label .subpanel1.label  -background #528B8B  -text "" -width 5
 pack .subpanel1.label -side bottom
-###最旁边的工具栏，按钮设置top会从上往下排###
-button .subpanel1.b1 -text "Button1" -command {.subpanel2 config -bg gray}
+###最旁?的工具?，按??置top??上往下排###
+
+###1. destory previous frame in subpanel2###
+###2. create new frame in subpanel2###
+button .subpanel1.b1 -text "Button1" -command {
+destroy .subpanel2.but1;
+destroy .subpanel2.but2;
+destroy .subpanel2.but3;
+###[but] is sub frame of subpanel2###
+frame .subpanel2.but1 -background #76EEC6 ;
+#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
+#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
+
+pack .subpanel2.but1 -side top;
+button .subpanel2.but1.b1 -text "Button1";
+pack .subpanel2.but1.b1  -side left  ;
+button .subpanel2.but1.b2 -text "Button2";
+pack .subpanel2.but1.b2  -side left  ;
+
+
+frame .subpanel2.but2 -background #76EEC6 ;
+pack .subpanel2.but2 -side top;
+button .subpanel2.but2.b1 -text "Button3";
+pack .subpanel2.but2.b1  -side left  ;
+button .subpanel2.but2.b2 -text "Button4";
+pack .subpanel2.but2.b2  -side left  ;
+
+
+frame .subpanel2.but3 -background #76EEC6 ;
+pack .subpanel2.but3 -side top;
+button .subpanel2.but3.b1 -text "Button5";
+pack .subpanel2.but3.b1  -side left  ;
+button .subpanel2.but3.b2 -text "Button6";
+pack .subpanel2.but3.b2  -side left  }
 bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #528B8B;} 
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #76EEC6}
 pack .subpanel1.b1  -side top  -pady 10
 
 
-button .subpanel1.b2 -text "Button2" 
+button .subpanel1.b2 -text "Button2"  -command {
+destroy .subpanel2.but1;
+destroy .subpanel2.but2;
+destroy .subpanel2.but3;
+###[but] is sub frame of subpanel2###
+frame .subpanel2.but1 -background #76EEC6 ;
+#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
+#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
+
+pack .subpanel2.but1 -side top;
+button .subpanel2.but1.b1 -text "Button11";
+pack .subpanel2.but1.b1  -side left  ;
+button .subpanel2.but1.b2 -text "Button22";
+pack .subpanel2.but1.b2  -side left  ;
+
+
+frame .subpanel2.but2 -background #76EEC6 ;
+pack .subpanel2.but2 -side top;
+button .subpanel2.but2.b1 -text "Button33";
+pack .subpanel2.but2.b1  -side left  ;
+button .subpanel2.but2.b2 -text "Button44";
+pack .subpanel2.but2.b2  -side left  ;
+
+
+frame .subpanel2.but3 -background #76EEC6 ;
+pack .subpanel2.but3 -side top;
+button .subpanel2.but3.b1 -text "Button55";
+pack .subpanel2.but3.b1  -side left  ;
+button .subpanel2.but3.b2 -text "Button66";
+pack .subpanel2.but3.b2  -side left  }
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #528B8B;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #76EEC6}
 pack .subpanel1.b2  -side top  -pady 10
 
-button .subpanel1.b3 -text "Button3"
+button .subpanel1.b3 -text "Button3" -command {
+destroy .subpanel2.but1;
+destroy .subpanel2.but2;
+destroy .subpanel2.but3;
+###[but] is sub frame of subpanel2###
+frame .subpanel2.but1 -background #76EEC6 ;
+#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
+#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
+
+pack .subpanel2.but1 -side top;
+button .subpanel2.but1.b1 -text "Button111";
+pack .subpanel2.but1.b1  -side left  ;
+button .subpanel2.but1.b2 -text "Button222";
+pack .subpanel2.but1.b2  -side left  ;
+
+
+frame .subpanel2.but2 -background #76EEC6 ;
+pack .subpanel2.but2 -side top;
+button .subpanel2.but2.b1 -text "Button333";
+pack .subpanel2.but2.b1  -side left  ;
+button .subpanel2.but2.b2 -text "Button444";
+pack .subpanel2.but2.b2  -side left  ;
+
+
+frame .subpanel2.but3 -background #76EEC6 ;
+pack .subpanel2.but3 -side top;
+button .subpanel2.but3.b1 -text "Button555";
+pack .subpanel2.but3.b1  -side left  ;
+button .subpanel2.but3.b2 -text "Button666";
+pack .subpanel2.but3.b2  -side left  }
 bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #528B8B;} 
 bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #76EEC6}
 pack .subpanel1.b3  -side top  -pady 10
@@ -79,43 +174,17 @@ pack .subpanel1.b8  -side top  -pady 10
 
 frame .subpanel2 -background #76EEC6 -height 800 -width 300
 pack .subpanel2 -side left -fill both -expand true
-###在每个frame的最底下加入label把frame从左到右撑起来###
-###width 40是最小化时工具栏的长度（后期需要调整）###
+###在每?frame的最底下加入label把frame?左到右?起?###
+###width 40是最小化?工具?的?度（后期需要?整）###
 label .subpanel2.label  -background #76EEC6  -text "" -width 40
 pack .subpanel2.label -side bottom
 
-###[but] is sub frame of subpanel2###
 
-frame .subpanel2.but1 -background #76EEC6 
-#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
-#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
-
-pack .subpanel2.but1 -side top
-button .subpanel2.but1.b1 -text "Button1"
-pack .subpanel2.but1.b1  -side left  
-button .subpanel2.but1.b2 -text "Button2"
-pack .subpanel2.but1.b2  -side left  
-
-
-frame .subpanel2.but2 -background #76EEC6 
-pack .subpanel2.but2 -side top
-button .subpanel2.but2.b1 -text "Button3"
-pack .subpanel2.but2.b1  -side left  
-button .subpanel2.but2.b2 -text "Button4"
-pack .subpanel2.but2.b2  -side left  
-
-
-frame .subpanel2.but3 -background #76EEC6 
-pack .subpanel2.but3 -side top
-button .subpanel2.but3.b1 -text "Button5"
-pack .subpanel2.but3.b1  -side left  
-button .subpanel2.but3.b2 -text "Button6"
-pack .subpanel2.but3.b2  -side left  
 
 
 
 #Operation Field
-###作业区###
+###作??###
 frame .mainpanel -background white -height 800 -width 1000
 pack .mainpanel -side left -fill both -expand true
 
@@ -183,7 +252,7 @@ pack $w.subpanel.but3 -side top;
 button $w.subpanel.but3.b1 -text "Button5";
 pack $w.subpanel.but3.b1  -side left  ;
 button $w.subpanel.but3.b2 -text "Button6";
-pack $w.subpanel.but3.b2  -side left;
+pack $w.subpanel.but3.b2  -side left
 }
 pack .subpanel3.ccc.b1  -side right  -padx 10 
 button .subpanel3.ccc.b2 -text "Button2"  -command "destroy .toolframe"
