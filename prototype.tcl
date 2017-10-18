@@ -15,9 +15,10 @@
 #name of window Image Editor
 
 wm title . "Image Editor"
-#wm maxsize . 1000 800
-#wm minsize . 1000 800
-#wm geometry . 1500*800+100+100
+#wm maxsize . 1700 900
+wm minsize . 1700 900
+wm geometry . 1700*900
+#wm resizable . 0 0 #cannot maximize and minimize 
 
 ###background color
 #333333 – mainpanel
