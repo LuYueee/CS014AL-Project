@@ -20,6 +20,9 @@ wm title . "Image Editor"
 #wm geometry . 1500*800+100+100
 
 ###background color
+#333333 – mainpanel
+#3e3e3e –subpanel
+#4e4e4e -menubar
 
 
 
@@ -65,7 +68,7 @@ button .subpanel2.but1.b2 -text "Button2";
 pack .subpanel2.but1.b2  -side left  ;
 
 
-frame .subpanel2.but2 -background #3B3B3B ;
+frame .subpanel2.but2 -background #3E3E3E ;
 pack .subpanel2.but2 -side top;
 button .subpanel2.but2.b1 -text "Button3";
 pack .subpanel2.but2.b1  -side left  ;
@@ -172,7 +175,7 @@ pack .subpanel1.b8  -side top  -pady 10
 
 #Tool Bar 2
 
-frame .subpanel2 -background #3B3B3B -height 800 -width 300
+frame .subpanel2 -background #3E3E3E -height 800 -width 300
 pack .subpanel2 -side left -fill both -expand true
 ###在每?frame的最底下加入label把frame?左到右?起?###
 ###width 40是最小化?工具?的?度（后期需要?整）###
