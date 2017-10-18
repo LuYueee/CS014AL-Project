@@ -22,14 +22,14 @@ wm title . "Image Editor"
 ###background color
 #333333 – mainpanel
 #3e3e3e –subpanel
-#4e4e4e -menubar
+#555555 -menubar
 
 
 
 
 
 #XO-
-frame .top -background #4E4E4E -height 50 -width 1700
+frame .top -background #555555 -height 50 -width 1700
 pack .top -side top -fill both 
 ###?里不?置-expand###
 ### Maximize Minimize Exit###
@@ -38,15 +38,15 @@ pack .top.b1  -side right  -padx 10
 button .top.b2 -text "Button2" 
 pack .top.b2  -side right  -padx 10
 ###label must be at the end of mainpanel code###
-label .top.label  -background #4E4E4E   -text "" -width 226
+label .top.label  -background #555555   -text "" -width 226
 
 
 
 #Menu Bar
-frame .subpanel1 -background #4E4E4E  -height 800 
+frame .subpanel1 -background #555555  -height 800 
 ###?里不?置-expand###
 pack .subpanel1 -side left -fill both 
-label .subpanel1.label  -background #4E4E4E  -text "" -width 5
+label .subpanel1.label  -background #555555  -text "" -width 5
 pack .subpanel1.label -side bottom
 ###最旁?的工具?，按??置top??上往下排###
 
@@ -82,7 +82,7 @@ button .subpanel2.but3.b1 -text "Button5";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button6";
 pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #4E4E4E;} 
+bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #555555;} 
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #3E3E3E}
 pack .subpanel1.b1  -side top  -pady 10
 
@@ -117,7 +117,7 @@ button .subpanel2.but3.b1 -text "Button55";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button66";
 pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #4E4E4E;} 
+bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #555555;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #3E3E3E}
 pack .subpanel1.b2  -side top  -pady 10
 
@@ -151,13 +151,13 @@ button .subpanel2.but3.b1 -text "Button555";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button666";
 pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #4E4E4E;} 
+bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #555555;} 
 bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #3E3E3E}
 pack .subpanel1.b3  -side top  -pady 10
 
 
 button .subpanel1.b4 -text "Button4" 
-bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #4E4E4E;} 
+bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #555555;} 
 bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #3E3E3E}
 pack .subpanel1.b4  -side top  -pady 10
 
@@ -200,12 +200,12 @@ pack .mainpanel.top.ccc.b1  -side right  -padx 40
 button .mainpanel.top.ccc.b2 -text "Button2" 
 pack .mainpanel.top.ccc.b2  -side right  -padx 40
 
-frame .mainpanel.bottom -background #4E4E4E  -width 1000
+frame .mainpanel.bottom -background #555555  -width 1000
 pack .mainpanel.bottom -side bottom -fill both
 
 
 ###Modifies by Yiran, Chen###
-frame .mainpanel.bottom.ccc -background #4E4E4E -height 20
+frame .mainpanel.bottom.ccc -background #555555 -height 20
 pack .mainpanel.bottom.ccc -side bottom 
 button .mainpanel.bottom.ccc.b1 -text "Button1" 
 pack .mainpanel.bottom.ccc.b1  -side right  -padx 10
@@ -272,13 +272,13 @@ global red yellow blue score
 set score [format {Red : %d    Yellow : %d    Blue : %d} $red $yellow $blue]
 }
 
-scale .subpanel3.red -label "Red" -variable red -background #4E4E4E \
+scale .subpanel3.red -label "Red" -variable red -background #555555 \
 -length 5c -width .25c -from 0 -to 30 \
 -orient horizontal -command {display}
-scale .subpanel3.yellow -label "Yellow" -variable yellow -background #4E4E4E \
+scale .subpanel3.yellow -label "Yellow" -variable yellow -background #555555 \
 -length 5c -width .25c -from 0 -to 30 \
 -orient horizontal -command {display}
-scale .subpanel3.blue -label "Blue" -variable blue -background #4E4E4E \
+scale .subpanel3.blue -label "Blue" -variable blue -background #555555 \
 -length 5c -width .25c -from 0 -to 30 \
 -orient horizontal -command {display}
 label .subpanel3.score -background #3E3E3E -textvariable score
