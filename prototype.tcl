@@ -82,7 +82,7 @@ pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button5";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button6";
-pack .subpanel2.but3.b2  -side left  } -image [image create photo -file b1.gif]  -bg #555555
+pack .subpanel2.but3.b2  -side left  } -image [image create photo -file file.gif]  -bg #555555
 
 bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #3E3E3E;} 
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #555555}
@@ -118,7 +118,7 @@ pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button55";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button66";
-pack .subpanel2.but3.b2  -side left  } -image [image create photo -file b2.gif] -bg #555555
+pack .subpanel2.but3.b2  -side left  } -image [image create photo -file imageedit.gif] -bg #555555
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #3E3E3E;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
 pack .subpanel1.b2  -side top  -pady 10
