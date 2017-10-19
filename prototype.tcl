@@ -1,8 +1,8 @@
 ######################################
 #	CS014AL Project: Image Editor	
-#	Window Prototype			        
-#	Yue,Lu				                
-#	10/04/2017		                
+#	Window Prototype			       
+#	Yue,Lu				               
+#	10/04/2017		               
 ######################################
 
 ###10/04：根据原型布局，??的框架搭建###
@@ -82,9 +82,10 @@ pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button5";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button6";
-pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #555555;} 
-bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #3E3E3E}
+pack .subpanel2.but3.b2  -side left  } -image [image create photo -file b1.gif]  -bg #555555
+
+bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #3E3E3E;} 
+bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #555555}
 pack .subpanel1.b1  -side top  -pady 10
 
 
@@ -117,9 +118,9 @@ pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button55";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button66";
-pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #555555;} 
-bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #3E3E3E}
+pack .subpanel2.but3.b2  -side left  } -image [image create photo -file b2.gif] -bg #555555
+bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #3E3E3E;} 
+bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
 pack .subpanel1.b2  -side top  -pady 10
 
 button .subpanel1.b3 -text "Button3" -command {
@@ -151,20 +152,20 @@ pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button555";
 pack .subpanel2.but3.b1  -side left  ;
 button .subpanel2.but3.b2 -text "Button666";
-pack .subpanel2.but3.b2  -side left  }
-bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #555555;} 
-bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #3E3E3E}
+pack .subpanel2.but3.b2  -side left  } -bg #555555
+bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #3E3E3E;} 
+bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #555555}
 pack .subpanel1.b3  -side top  -pady 10
 
 
-button .subpanel1.b4 -text "Button4" 
-bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #555555;} 
-bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #3E3E3E}
+button .subpanel1.b4 -text "Button4" -bg #555555
+bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #3E3E3E;} 
+bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #555555}
 pack .subpanel1.b4  -side top  -pady 10
 
-button .subpanel1.b5 -text "Button5" 
+button .subpanel1.b5 -text "Button5" -bg #555555
 pack .subpanel1.b5  -side top  -pady 10
-button .subpanel1.b6 -text "Button6" 
+button .subpanel1.b6 -text "Button6" -bg #555555
 pack .subpanel1.b6  -side top  -pady 10
 
 
@@ -200,6 +201,78 @@ button .mainpanel.top.ccc.b1 -text "Button1"
 pack .mainpanel.top.ccc.b1  -side right  -padx 40
 button .mainpanel.top.ccc.b2 -text "Button2" 
 pack .mainpanel.top.ccc.b2  -side right  -padx 40
+
+frame .mainpanel.cen -background #333333  -width 1000
+pack .mainpanel.cen -side top -fill both
+##################################################
+Canvas
+##################################################
+set t .mainpanel.cen
+
+
+ set _paint(top) $t
+ set _paint(width) 1100
+ set _paint(height) 900
+
+ set _paint(bg) #333333
+ set _paint(color) white
+
+ # Canvas
+
+ set _paint(can) [canvas $t.c \
+    -width $_paint(width) \
+    -height $_paint(height) \
+    -background $_paint(bg) \
+    ]
+
+ grid $_paint(can) -row 0 -column 0
+
+ # Image
+
+ set _paint(image) [image create photo \
+    -width $_paint(width) \
+    -height $_paint(height) \
+    -palette 256/256/256 \
+    ]
+
+ # Canvas image item
+
+ set _paint(image_id) [$_paint(can) create image \
+    0 0 \
+    -anchor nw \
+    -image $_paint(image) \
+    ]
+
+ # Paint pixel at a X,Y coord
+
+ proc Paint {x y} {
+    global _paint
+
+    if {$x >= 0 && $y >= 0} {
+        $_paint(image) put $_paint(color) \
+            -to $x $y \
+                [expr {$x + 1}] [expr {$y + 1}]
+    }
+ }
+
+ bind $_paint(can) <1> {Paint %x %y}
+ bind $_paint(can) <B1-Motion> {Paint %x %y}
+
+ # Button 3 will select a new paint color
+
+ proc ChangeColor {} {
+    global _paint
+    set _paint(color) [tk_chooseColor]
+    raise $_paint(top)
+ }
+
+ bind $_paint(can) <3> {ChangeColor}
+
+
+
+##################################################
+Canvas
+##################################################
 
 frame .mainpanel.bottom -background #555555  -width 1000
 pack .mainpanel.bottom -side bottom -fill both
