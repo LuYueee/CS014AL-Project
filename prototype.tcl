@@ -1,8 +1,8 @@
 ######################################
 #	CS014AL Project: Image Editor	
-#	Window Prototype			      
-#	Yue,Lu				              
-#	10/04/2017		              
+#	Window Prototype			       
+#	Yue,Lu				               
+#	10/04/2017		               
 ######################################
 
 ###10/04：根据原型布局，??的框架搭建###
@@ -136,9 +136,9 @@ button .subpanel2.but1.b2 -text "Button22";
 pack .subpanel2.but1.b2  -side left -padx 20  ;
 
 frame .subpanel2.but4 -background #3E3E3E ;
-label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E
+label .subpanel2.but4.lb1 -text "Zoom In" -fg white -bg #3E3E3E
 pack .subpanel2.but4.lb1  -side left  -padx 20 
-label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+label .subpanel2.but4.lb2 -text "Zoom Out" -fg white -bg #3E3E3E
 pack .subpanel2.but4.lb2  -side left  -padx 20 
 pack .subpanel2.but4 -side top;
 
@@ -151,9 +151,9 @@ button .subpanel2.but2.b2 -text "Button44";
 pack .subpanel2.but2.b2  -side left -padx 20  ;
 
 frame .subpanel2.but5 -background #3E3E3E ;
-label .subpanel2.but5.lb1 -text "Camera" -fg white -bg #3E3E3E
+label .subpanel2.but5.lb1 -text "Full Screen" -fg white -bg #3E3E3E
 pack .subpanel2.but5.lb1  -side left  -padx 20 
-label .subpanel2.but5.lb2 -text "Stitch Pictures" -fg white -bg #3E3E3E
+label .subpanel2.but5.lb2 -text "Click" -fg white -bg #3E3E3E
 pack .subpanel2.but5.lb2  -side left  -padx 20 
 pack .subpanel2.but5 -side top;
 
@@ -165,9 +165,9 @@ button .subpanel2.but3.b2 -text "Button66";
 pack .subpanel2.but3.b2  -side left -padx 20 ;
 
 frame .subpanel2.but6 -background #3E3E3E ;
-label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
+label .subpanel2.but6.lb1 -text "Drag" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb1  -side left  -padx 20 
-label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
+label .subpanel2.but6.lb2 -text "Like" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
  }  -bg #555555
@@ -196,9 +196,9 @@ button .subpanel2.but1.b2 -text "Button222";
 pack .subpanel2.but1.b2  -side left -padx 20  ;
 
 frame .subpanel2.but4 -background #3E3E3E ;
-label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E
+label .subpanel2.but4.lb1 -text "Email" -fg white -bg #3E3E3E
 pack .subpanel2.but4.lb1  -side left  -padx 20 
-label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+label .subpanel2.but4.lb2 -text "Facebook" -fg white -bg #3E3E3E
 pack .subpanel2.but4.lb2  -side left  -padx 20 
 pack .subpanel2.but4 -side top;
 
@@ -212,9 +212,9 @@ pack .subpanel2.but2.b2  -side left -padx 20 ;
 
 
 frame .subpanel2.but5 -background #3E3E3E ;
-label .subpanel2.but5.lb1 -text "Camera" -fg white -bg #3E3E3E
+label .subpanel2.but5.lb1 -text "Twitter" -fg white -bg #3E3E3E
 pack .subpanel2.but5.lb1  -side left  -padx 20 
-label .subpanel2.but5.lb2 -text "Stitch Pictures" -fg white -bg #3E3E3E
+label .subpanel2.but5.lb2 -text "Instagram" -fg white -bg #3E3E3E
 pack .subpanel2.but5.lb2  -side left  -padx 20 
 pack .subpanel2.but5 -side top;
 
@@ -227,9 +227,9 @@ button .subpanel2.but3.b2 -text "Button666";
 pack .subpanel2.but3.b2  -side left -padx 20 
 
 frame .subpanel2.but6 -background #3E3E3E ;
-label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
+label .subpanel2.but6.lb1 -text "Share Link" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb1  -side left  -padx 20 
-label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
+label .subpanel2.but6.lb2 -text "Contact Us" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
 
