@@ -1,8 +1,8 @@
 ######################################
 #	CS014AL Project: Image Editor	
-#	Window Prototype			       
-#	Yue,Lu				               
-#	10/04/2017		               
+#	Window Prototype			      
+#	Yue,Lu				              
+#	10/04/2017		              
 ######################################
 
 ###10/04：根据原型布局，??的框架搭建###
@@ -57,48 +57,73 @@ button .subpanel1.b1 -text "Button1" -command {
 destroy .subpanel2.but1;
 destroy .subpanel2.but2;
 destroy .subpanel2.but3;
+destroy .subpanel2.but4;
+destroy .subpanel2.but5;
+destroy .subpanel2.but6;
 ###[but] is sub frame of subpanel2###
 frame .subpanel2.but1 -background #3E3E3E ;
-#bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
-#bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
 
 pack .subpanel2.but1 -side top;
 button .subpanel2.but1.b1 -text "Button1"  -image [image create photo -file image.gif] -bg #3E3E3E ;
 ##################################################################
 ##############################################################
-pack .subpanel2.but1.b1  -side left -padx 20 -pady 10;
-button .subpanel2.but1.b2 -text "Button2";
-pack .subpanel2.but1.b2  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but1.b1  -side left -padx 20 ;
 
+
+button .subpanel2.but1.b2 -text "Button2";
+pack .subpanel2.but1.b2  -side left -padx 20 ;
+
+frame .subpanel2.but4 -background #3E3E3E ;
+label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb1  -side left  -padx 20 
+label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb2  -side left  -padx 20 
+pack .subpanel2.but4 -side top;
 
 frame .subpanel2.but2 -background #3E3E3E ;
 pack .subpanel2.but2 -side top;
 button .subpanel2.but2.b1 -text "Button3";
-pack .subpanel2.but2.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but2.b1  -side left -padx 20;
 button .subpanel2.but2.b2 -text "Button4";
-pack .subpanel2.but2.b2  -side left -padx 20 -pady 10 ;
-
+pack .subpanel2.but2.b2  -side left -padx 20 ;
+frame .subpanel2.but5 -background #3E3E3E ;
+label .subpanel2.but5.lb1 -text "Camera" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb1  -side left  -padx 20 
+label .subpanel2.but5.lb2 -text "Stitch Pictures" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb2  -side left  -padx 20 
+pack .subpanel2.but5 -side top;
 
 frame .subpanel2.but3 -background #3E3E3E ;
 pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button5";
-pack .subpanel2.but3.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but3.b1  -side left -padx 20 ;
 button .subpanel2.but3.b2 -text "Button6";
-pack .subpanel2.but3.b2  -side left -padx 20 -pady 10
+pack .subpanel2.but3.b2  -side left -padx 20;
+
+frame .subpanel2.but6 -background #3E3E3E ;
+label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb1  -side left  -padx 20 
+label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb2  -side left  -padx 20 
+pack .subpanel2.but6 -side top;
 
 } -image [image create photo -file file.gif]  -bg #555555
 
 bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #3E3E3E;} 
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #555555}
-pack .subpanel1.b1  -side top  -pady 10
+pack .subpanel1.b1  -side top 
 
-label .subpanel1.lb1 -text "File" -color white
+label .subpanel1.lb1 -text "File" -fg white -bg #555555
 pack .subpanel1.lb1  -side top  
 
 button .subpanel1.b2 -text "Button2"  -command {
 destroy .subpanel2.but1;
 destroy .subpanel2.but2;
 destroy .subpanel2.but3;
+destroy .subpanel2.but4;
+destroy .subpanel2.but5;
+destroy .subpanel2.but6;
+
 ###[but] is sub frame of subpanel2###
 frame .subpanel2.but1 -background #3E3E3E ;
 #bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
@@ -106,33 +131,59 @@ frame .subpanel2.but1 -background #3E3E3E ;
 
 pack .subpanel2.but1 -side top;
 button .subpanel2.but1.b1 -text "Button11";
-pack .subpanel2.but1.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but1.b1  -side left -padx 20 ;
 button .subpanel2.but1.b2 -text "Button22";
-pack .subpanel2.but1.b2  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but1.b2  -side left -padx 20  ;
+
+frame .subpanel2.but4 -background #3E3E3E ;
+label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb1  -side left  -padx 20 
+label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb2  -side left  -padx 20 
+pack .subpanel2.but4 -side top;
 
 
 frame .subpanel2.but2 -background #3E3E3E ;
 pack .subpanel2.but2 -side top;
 button .subpanel2.but2.b1 -text "Button33";
-pack .subpanel2.but2.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but2.b1  -side left -padx 20  ;
 button .subpanel2.but2.b2 -text "Button44";
-pack .subpanel2.but2.b2  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but2.b2  -side left -padx 20  ;
 
+frame .subpanel2.but5 -background #3E3E3E ;
+label .subpanel2.but5.lb1 -text "Camera" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb1  -side left  -padx 20 
+label .subpanel2.but5.lb2 -text "Stitch Pictures" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb2  -side left  -padx 20 
+pack .subpanel2.but5 -side top;
 
 frame .subpanel2.but3 -background #3E3E3E ;
 pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button55";
-pack .subpanel2.but3.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but3.b1  -side left -padx 20  ;
 button .subpanel2.but3.b2 -text "Button66";
-pack .subpanel2.but3.b2  -side left -padx 20 -pady 10 } -image [image create photo -file imageedit.gif] -bg #555555
+pack .subpanel2.but3.b2  -side left -padx 20 ;
+
+frame .subpanel2.but6 -background #3E3E3E ;
+label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb1  -side left  -padx 20 
+label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb2  -side left  -padx 20 
+pack .subpanel2.but6 -side top;
+ }  -bg #555555
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #3E3E3E;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
-pack .subpanel1.b2  -side top  -pady 10
+pack .subpanel1.b2  -side top  
+label .subpanel1.lb2 -text "Edit" -fg white -bg #555555
+pack .subpanel1.lb2  -side top  
 
 button .subpanel1.b3 -text "Button3" -command {
 destroy .subpanel2.but1;
 destroy .subpanel2.but2;
 destroy .subpanel2.but3;
+destroy .subpanel2.but4;
+destroy .subpanel2.but5;
+destroy .subpanel2.but6;
 ###[but] is sub frame of subpanel2###
 frame .subpanel2.but1 -background #3E3E3E ;
 #bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
@@ -140,43 +191,76 @@ frame .subpanel2.but1 -background #3E3E3E ;
 
 pack .subpanel2.but1 -side top;
 button .subpanel2.but1.b1 -text "Button111";
-pack .subpanel2.but1.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but1.b1  -side left -padx 20 ;
 button .subpanel2.but1.b2 -text "Button222";
-pack .subpanel2.but1.b2  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but1.b2  -side left -padx 20  ;
+
+frame .subpanel2.but4 -background #3E3E3E ;
+label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb1  -side left  -padx 20 
+label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+pack .subpanel2.but4.lb2  -side left  -padx 20 
+pack .subpanel2.but4 -side top;
 
 
 frame .subpanel2.but2 -background #3E3E3E ;
 pack .subpanel2.but2 -side top;
 button .subpanel2.but2.b1 -text "Button333";
-pack .subpanel2.but2.b1  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but2.b1  -side left -padx 20  ;
 button .subpanel2.but2.b2 -text "Button444";
-pack .subpanel2.but2.b2  -side left -padx 20 -pady 10 ;
+pack .subpanel2.but2.b2  -side left -padx 20 ;
+
+
+frame .subpanel2.but5 -background #3E3E3E ;
+label .subpanel2.but5.lb1 -text "Camera" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb1  -side left  -padx 20 
+label .subpanel2.but5.lb2 -text "Stitch Pictures" -fg white -bg #3E3E3E
+pack .subpanel2.but5.lb2  -side left  -padx 20 
+pack .subpanel2.but5 -side top;
 
 
 frame .subpanel2.but3 -background #3E3E3E ;
 pack .subpanel2.but3 -side top;
 button .subpanel2.but3.b1 -text "Button555";
-pack .subpanel2.but3.b1  -side left -padx 20 -pady 10  ;
+pack .subpanel2.but3.b1  -side left -padx 20   ;
 button .subpanel2.but3.b2 -text "Button666";
-pack .subpanel2.but3.b2  -side left -padx 20 -pady 10 } -bg #555555
+pack .subpanel2.but3.b2  -side left -padx 20 
+
+frame .subpanel2.but6 -background #3E3E3E ;
+label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb1  -side left  -padx 20 
+label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb2  -side left  -padx 20 
+pack .subpanel2.but6 -side top;
+
+ } -bg #555555
 bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #3E3E3E;} 
 bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #555555}
-pack .subpanel1.b3  -side top  -pady 10
+pack .subpanel1.b3  -side top 
+label .subpanel1.lb3 -text "Share" -fg white -bg #555555
+pack .subpanel1.lb3  -side top  
 
 
 button .subpanel1.b4 -text "Button4" -bg #555555 -image [image create photo -file save.gif]
 bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #3E3E3E;} 
 bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #555555}
-pack .subpanel1.b4  -side top  -pady 10
+pack .subpanel1.b4  -side top  
+label .subpanel1.lb4 -text "Save" -fg white -bg #555555
+pack .subpanel1.lb4  -side top  
 
 button .subpanel1.b5 -text "Button5" -bg #555555 -image [image create photo -file delete.gif]
 bind  .subpanel1.b5 <Enter> {.subpanel1.b5 config -bg #3E3E3E;} 
 bind  .subpanel1.b5 <Leave> {.subpanel1.b5 config -bg #555555}
-pack .subpanel1.b5  -side top  -pady 10
+pack .subpanel1.b5  -side top 
+label .subpanel1.lb5 -text "Delete" -fg white -bg #555555
+pack .subpanel1.lb5  -side top  
+
 button .subpanel1.b6 -text "Button6" -bg #555555 
 bind  .subpanel1.b6 <Enter> {.subpanel1.b6 config -bg #3E3E3E;} 
 bind  .subpanel1.b6 <Leave> {.subpanel1.b6 config -bg #555555}
 pack .subpanel1.b6  -side top  -pady 10
+label .subpanel1.lb6 -text "Help" -fg white -bg #555555
+pack .subpanel1.lb6  -side top
 
 
 
@@ -360,7 +444,7 @@ scale .subpanel3.yellow -label "Yellow" -variable yellow -background #555555 \
 scale .subpanel3.blue -label "Blue" -variable blue -background #555555 \
 -length 5c -width .25c -from 0 -to 30 \
 -orient horizontal -command {display}
-label .subpanel3.score -background #3E3E3E -textvariable score
+label .subpanel3.score -background #3E3E3E -fg white -textvariable score
 
 pack .subpanel3.score -side bottom -padx 2 -pady 2 
 pack .subpanel3.red -side bottom -padx 2 -pady 2 
