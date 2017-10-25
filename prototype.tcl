@@ -409,35 +409,35 @@ pack .subpanel3.label -side bottom
 
 
 
-frame .subpanel3.ccc -background  #3E3E3E -height 20
+frame .subpanel3.ccc -background  #3e3e3e -height 20
 pack .subpanel3.ccc -side bottom -pady 20
-button .subpanel3.ccc.b1 -text "Button1" -bg #3E3E3E -command {
+button .subpanel3.ccc.b1 -text "Button1" -bg #3e3e3e -command {
 set w .toolframe;
 toplevel $w;
 wm title $w "Tool Box";
-frame $w.subpanel -background #3E3E3E -height 800 -width 300;
+frame $w.subpanel -background #555555 -height 800 -width 300;
 pack $w.subpanel -side left -fill both ;
 
 frame $w.subpanel.but1 -background #3E3E3E ;
 pack $w.subpanel.but1 -side top;
-button $w.subpanel.but1.b1 -text "Button1" -bg #3E3E3E;
+button $w.subpanel.but1.b1 -text "Button1" -bg #555555;
 pack $w.subpanel.but1.b1  -side left  ;
-button $w.subpanel.but1.b2 -text "Button2" -bg #3E3E3E;
+button $w.subpanel.but1.b2 -text "Button2" -bg #555555;
 pack $w.subpanel.but1.b2  -side left  ;
 
 
-frame $w.subpanel.but2 -background #3E3E3E ;
+frame $w.subpanel.but2 -background #555555 ;
 pack $w.subpanel.but2 -side top;
-button $w.subpanel.but2.b1 -text "Button3" -bg #3E3E3E;
+button $w.subpanel.but2.b1 -text "Button3" -bg #555555;
 pack $w.subpanel.but2.b1  -side left  ;
-button $w.subpanel.but2.b2 -text "Button4" -bg #3E3E3E;
+button $w.subpanel.but2.b2 -text "Button4" -bg #555555;
 pack $w.subpanel.but2.b2  -side left  ;
 
-frame $w.subpanel.but3 -background #3E3E3E ;
+frame $w.subpanel.but3 -background #555555 ;
 pack $w.subpanel.but3 -side top;
-button $w.subpanel.but3.b1 -text "Button5" -bg #3E3E3E;
+button $w.subpanel.but3.b1 -text "Button5" -bg #555555;
 pack $w.subpanel.but3.b1  -side left  ;
-button $w.subpanel.but3.b2 -text "Button6" -bg #3E3E3E;
+button $w.subpanel.but3.b2 -text "Button6" -bg #555555;
 pack $w.subpanel.but3.b2  -side left
 
 
