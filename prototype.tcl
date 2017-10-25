@@ -10,14 +10,14 @@
 ###10/13 : crate and distory windows && bind enter/leave event###
 ###10/13(2) : Mouse Event & - Command (crate buttons & destroy buttons); fix size of main/sub window (not complete)###
 
-
+##10/25#(1)***help menu (2)window size (3)bind event
 
 #name of window Image Editor
 
 wm title . "Image Editor"
 #wm maxsize . 1700 900
-#wm minsize . 1700 900
-wm geometry . +10-30
+wm minsize . 1445 765
+wm geometry . +2-3
 wm resizable . 0 0
 
 ###background color
@@ -30,7 +30,7 @@ wm resizable . 0 0
 
 
 #XO-
-frame .top -background #555555 -height 50 -width 1700
+frame .top -background #555555 -height 43 -width 1445
 pack .top -side top -fill both 
 ###?里不?置-expand###
 ### Maximize Minimize Exit###
@@ -43,7 +43,7 @@ bind .top.b1 <Leave> {.top.b1 config -bg #555555}
 bind .top.b2 <Enter> {.top.b2 config -bg #999999} 
 bind .top.b2 <Leave> {.top.b2 config -bg #555555}
 ###label must be at the end of mainpanel code###
-label .top.label  -background #3E3E3E   -text "" -width 226
+label .top.label  -background #3E3E3E   -text "" -width 192
 
 
 
@@ -51,7 +51,7 @@ label .top.label  -background #3E3E3E   -text "" -width 226
 frame .subpanel1 -background #555555  -height 800 
 ###?里不?置-expand###
 pack .subpanel1 -side left -fill both 
-label .subpanel1.label  -background #555555  -text "" -width 5
+label .subpanel1.label  -background #555555  -text "" -width 4
 pack .subpanel1.label -side bottom
 ###最旁?的工具?，按??置top??上往下排###
 
@@ -155,9 +155,18 @@ bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #999999;}
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #555555}
 pack .subpanel1.b1  -side top 
 
-label .subpanel1.lb1 -text "File" -fg white -bg #555555
+label .subpanel1.lb1 -text "Open" -fg white -bg #555555
 pack .subpanel1.lb1  -side top  
-
+######################################################################################################
+####################################################################################################
+ button .subpanel1.b4 -text "Button4" -bg #555555 -image [image create photo -file newfile.gif]
+bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #999999;} 
+bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #555555}
+pack .subpanel1.b4  -side top  
+label .subpanel1.lb4 -text "New" -fg white -bg #555555
+pack .subpanel1.lb4  -side top  
+####################################################################################################
+####################################################################################################
 button .subpanel1.b2 -text "Button2" -image [image create photo -file edit.gif]   -command {
 destroy .subpanel2.but1;
 destroy .subpanel2.but2;
@@ -307,6 +316,9 @@ bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
 
 
  } -bg #555555
+
+
+
 bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #999999;} 
 bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #555555}
 pack .subpanel1.b3  -side top 
@@ -314,21 +326,22 @@ label .subpanel1.lb3 -text "Share" -fg white -bg #555555
 pack .subpanel1.lb3  -side top  
 
 
-button .subpanel1.b4 -text "Button4" -bg #555555 -image [image create photo -file save.gif]
-bind  .subpanel1.b4 <Enter> {.subpanel1.b4 config -bg #999999;} 
-bind  .subpanel1.b4 <Leave> {.subpanel1.b4 config -bg #555555}
-pack .subpanel1.b4  -side top  
-label .subpanel1.lb4 -text "Save" -fg white -bg #555555
-pack .subpanel1.lb4  -side top  
 
-button .subpanel1.b5 -text "Button5" -bg #555555 -image [image create photo -file delete.gif]
+button .subpanel1.b5 -text "Button5" -bg #555555 -image [image create photo -file save.gif]
 bind  .subpanel1.b5 <Enter> {.subpanel1.b5 config -bg #999999;} 
 bind  .subpanel1.b5 <Leave> {.subpanel1.b5 config -bg #555555}
-pack .subpanel1.b5  -side top 
-label .subpanel1.lb5 -text "Delete" -fg white -bg #555555
+pack .subpanel1.b5  -side top  
+label .subpanel1.lb5 -text "Save" -fg white -bg #555555
 pack .subpanel1.lb5  -side top  
 
-button .subpanel1.b6 -text "Button6" -image [image create photo -file help.gif] -bg #555555 -command {
+button .subpanel1.b6 -text "Button6" -bg #555555 -image [image create photo -file delete.gif]
+bind  .subpanel1.b6 <Enter> {.subpanel1.b6 config -bg #999999;} 
+bind  .subpanel1.b6 <Leave> {.subpanel1.b6 config -bg #555555}
+pack .subpanel1.b6  -side top 
+label .subpanel1.lb6 -text "Delete" -fg white -bg #555555
+pack .subpanel1.lb6  -side top  
+
+button .subpanel1.b7 -text "Button7" -image [image create photo -file help.gif] -bg #555555 -command {
 set mn .toolframe;
 toplevel $mn;
 wm title $mn "User's Manual";
@@ -336,24 +349,24 @@ wm maxsize $mn 20 600
 wm minsize $mn 20 600
 wm geometry $mn -1400+90
 #wm resizable $mn 0 0
-frame $mn.subpanel -background #555555 -height 100 -width 100;
+frame $mn.subpanel -background #555555 -height 85 -width 85;
 pack $mn.subpanel -side left -fill both ;
 }
-bind  .subpanel1.b6 <Enter> {.subpanel1.b6 config -bg #999999;} 
-bind  .subpanel1.b6 <Leave> {.subpanel1.b6 config -bg #555555}
-pack .subpanel1.b6  -side top  -pady 10
-label .subpanel1.lb6 -text "Help" -fg white -bg #555555
-pack .subpanel1.lb6  -side top
+bind  .subpanel1.b7 <Enter> {.subpanel1.b7 config -bg #999999;} 
+bind  .subpanel1.b7 <Leave> {.subpanel1.b7 config -bg #555555}
+pack .subpanel1.b7  -side top  -pady 10
+label .subpanel1.lb7 -text "Help" -fg white -bg #555555
+pack .subpanel1.lb7  -side top
 
 
 
 #Tool Bar 2
 
-frame .subpanel2 -background #3E3E3E -height 800 -width 300
+frame .subpanel2 -background #3E3E3E -height 680 -width 280
 pack .subpanel2 -side left -fill both -expand true
 ###在每?frame的最底下加入label把frame?左到右?起?###
 ###width 40是最小化?工具?的?度（后期需要?整）###
-label .subpanel2.label  -background #3E3E3E  -text "" -width 40
+label .subpanel2.label  -background #3E3E3E  -text "" -width 37
 pack .subpanel2.label -side bottom
 
 
@@ -361,11 +374,11 @@ pack .subpanel2.label -side bottom
 
 
 #Operation Field
-frame .mainpanel -background #333333 -height 800 -width 1000
+frame .mainpanel -background #333333 -height 680 -width 850
 pack .mainpanel -side left -fill both -expand true
-frame .mainpanel.top -background #333333  -width 1000
+frame .mainpanel.top -background #333333  -width 850
 pack .mainpanel.top -side top -fill both
-frame .mainpanel.top.ccc -background #333333  -height 20
+frame .mainpanel.top.ccc -background #333333  -height 17
 pack .mainpanel.top.ccc -side bottom 
 button .mainpanel.top.ccc.b1 -text "Button1" -image [image create photo -file picture.gif] -bg #555555
 pack .mainpanel.top.ccc.b1  -side right  -padx 40
@@ -376,7 +389,7 @@ bind .mainpanel.top.ccc.b1 <Leave> {.mainpanel.top.ccc.b1 config -bg #555555}
 bind .mainpanel.top.ccc.b2 <Enter> {.mainpanel.top.ccc.b2 config -bg #999999} 
 bind .mainpanel.top.ccc.b2 <Leave> {.mainpanel.top.ccc.b2 config -bg #555555}
 
-frame .mainpanel.cen -background #333333  -width 1000
+frame .mainpanel.cen -background #333333  -width 850
 pack .mainpanel.cen -side top -fill both
 
 ##################################################
@@ -384,8 +397,8 @@ Canvas
 ##################################################
 set t .mainpanel.cen
  set _paint(top) $t
- set _paint(width) 1100
- set _paint(height) 900
+ set _paint(width) 935
+ set _paint(height) 765
 
  set _paint(bg) #333333
  set _paint(color) white
@@ -445,7 +458,7 @@ set t .mainpanel.cen
 Canvas
 ##################################################
 
-frame .mainpanel.bottom -background #555555  -width 1000
+frame .mainpanel.bottom -background #555555  -width 850
 pack .mainpanel.bottom -side bottom -fill both
 
 
@@ -459,14 +472,14 @@ pack .mainpanel.bottom.ccc.b2  -side right  -padx 10
 ###Modifies by Yiran, Chen###
 
 ###label must be at the end of mainpanel code###
-label .mainpanel.label  -background #333333  -text "" -width 133
+label .mainpanel.label  -background #333333  -text "" -width 113
 pack .mainpanel.label -side bottom
 
 
 #Tool Bar 3
-frame .subpanel3 -background #3E3E3E -height 800 -width 300
+frame .subpanel3 -background #3E3E3E -height 800 -width 113
 pack .subpanel3 -side left -fill both -expand true
-label .subpanel3.label  -background #3E3E3E  -text "" -width 40
+label .subpanel3.label  -background #3E3E3E  -text "" -width 34
 pack .subpanel3.label -side bottom
 
 label .subpanel3.label1  -background #3E3E3E  -text "" -image [image create photo -file color.gif]
@@ -481,7 +494,7 @@ toplevel $w;
 wm title $w "Tool Box";
 #wm maxsize $w 20 600
 #wm minsize $w 20 600
-wm geometry $w +1400+90
+wm geometry $w +1190+0
 wm resizable $w 0 0
 frame $w.subpanel -background #555555;
 pack $w.subpanel -side left -fill both ;
@@ -611,5 +624,3 @@ pack .subpanel3.blue -side bottom -padx 2 -pady 2
 
 
 
-#1.help menu
-#2.window size
