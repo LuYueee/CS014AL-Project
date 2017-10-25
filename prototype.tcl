@@ -16,9 +16,9 @@
 
 wm title . "Image Editor"
 #wm maxsize . 1700 900
-wm minsize . 1700 900
-wm geometry . 1700*900
-#wm resizable . 0 0 #cannot maximize and minimize 
+#wm minsize . 1700 900
+wm geometry . +10-30
+wm resizable . 0 0
 
 ###background color
 #333333 – mainpanel
@@ -416,7 +416,11 @@ button .subpanel3.ccc.b1 -text "Button1" -bg #3e3e3e -command {
 set w .toolframe;
 toplevel $w;
 wm title $w "Tool Box";
-frame $w.subpanel -background #555555 -height 800 -width 300;
+#wm maxsize $w 20 600
+#wm minsize $w 20 600
+wm geometry $w +1400+90
+wm resizable $w 0 0
+frame $w.subpanel -background #555555;
 pack $w.subpanel -side left -fill both ;
 
 frame $w.subpanel.but1 -background #3E3E3E ;
