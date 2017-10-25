@@ -1,3 +1,4 @@
+
 ######################################
 #	CS014AL Project: Image Editor	
 #	Window Prototype			       
@@ -64,9 +65,33 @@ destroy .subpanel2.but6;
 frame .subpanel2.but1 -background #3E3E3E ;
 
 pack .subpanel2.but1 -side top;
-button .subpanel2.but1.b1 -text "Button1"  -image [image create photo -file image.gif] -bg #3E3E3E ;
-##################################################################
-##############################################################
+##YiRan,Chen##
+button .subpanel2.but1.b1 -text "Button1"    -command {
+	package require Tk
+
+set types {
+	{{GIF Files}        {.gif}        }
+	{{PNG Files}        {.png}        }
+	{{JPG Files}        {.jpg}        }
+    {{Text Files}       {.txt}        }
+    {{TCL Scripts}      {.tcl}        }
+    {{C Source Files}   {.c}      TEXT}
+    {{Text Files}       {}        TEXT}
+    {{All Files}        *             }
+}
+set filenameList [tk_getOpenFile -filetypes $types -multiple true ]
+
+foreach filename $filenameList {
+     if { [file readable $filename] } {
+        puts "I found $filename"      
+     }
+}
+
+set myImage [image create photo]
+$myImage read $filename
+$t.c create image 550 450 -image $myImage 
+}  -bg #3E3E3E ;
+##YiRan,Chen##
 pack .subpanel2.but1.b1  -side left -padx 20 ;
 
 
