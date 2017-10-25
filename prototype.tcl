@@ -35,9 +35,13 @@ pack .top -side top -fill both
 ###?里不?置-expand###
 ### Maximize Minimize Exit###
 button .top.b1 -text "Button1" -command "exit" -bg #3e3e3e -image [image create photo -file close.gif]
-pack .top.b1  -side right  -padx 10
+pack .top.b1  -side right  
 button .top.b2 -text "Button2" -bg #3e3e3e -image [image create photo -file minimize.gif]
-pack .top.b2  -side right  -padx 10
+pack .top.b2  -side right  
+bind .top.b1 <Enter> {.top.b1 config -bg #999999} 
+bind .top.b1 <Leave> {.top.b1 config -bg #555555}
+bind .top.b2 <Enter> {.top.b2 config -bg #999999} 
+bind .top.b2 <Leave> {.top.b2 config -bg #555555}
 ###label must be at the end of mainpanel code###
 label .top.label  -background #3E3E3E   -text "" -width 226
 
@@ -131,6 +135,20 @@ label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
 
+
+bind .subpanel2.but1.b1 <Enter> {.subpanel2.but1.b1 config -bg #999999} 
+bind .subpanel2.but1.b1 <Leave> {.subpanel2.but1.b1 config -bg #3e3e3e}
+bind .subpanel2.but1.b2 <Enter> {.subpanel2.but1.b2 config -bg #999999} 
+bind .subpanel2.but1.b2 <Leave> {.subpanel2.but1.b2 config -bg #3e3e3e}
+bind .subpanel2.but2.b1 <Enter> {.subpanel2.but2.b1 config -bg #999999} 
+bind .subpanel2.but2.b1 <Leave> {.subpanel2.but2.b1 config -bg #3e3e3e}
+bind .subpanel2.but2.b2 <Enter> {.subpanel2.but2.b2 config -bg #999999} 
+bind .subpanel2.but2.b2 <Leave> {.subpanel2.but2.b2 config -bg #3e3e3e}
+bind .subpanel2.but3.b1 <Enter> {.subpanel2.but3.b1 config -bg #999999} 
+bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
+bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
+bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
+
 } -image [image create photo -file file.gif]  -bg #555555
 
 bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #999999;} 
@@ -194,6 +212,20 @@ pack .subpanel2.but6.lb1  -side left  -padx 20
 label .subpanel2.but6.lb2 -text "Like" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
+
+
+bind .subpanel2.but1.b1 <Enter> {.subpanel2.but1.b1 config -bg #999999} 
+bind .subpanel2.but1.b1 <Leave> {.subpanel2.but1.b1 config -bg #3e3e3e}
+bind .subpanel2.but1.b2 <Enter> {.subpanel2.but1.b2 config -bg #999999} 
+bind .subpanel2.but1.b2 <Leave> {.subpanel2.but1.b2 config -bg #3e3e3e}
+bind .subpanel2.but2.b1 <Enter> {.subpanel2.but2.b1 config -bg #999999} 
+bind .subpanel2.but2.b1 <Leave> {.subpanel2.but2.b1 config -bg #3e3e3e}
+bind .subpanel2.but2.b2 <Enter> {.subpanel2.but2.b2 config -bg #999999} 
+bind .subpanel2.but2.b2 <Leave> {.subpanel2.but2.b2 config -bg #3e3e3e}
+bind .subpanel2.but3.b1 <Enter> {.subpanel2.but3.b1 config -bg #999999} 
+bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
+bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
+bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
  }  -bg #555555
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #999999;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
@@ -208,6 +240,7 @@ destroy .subpanel2.but3;
 destroy .subpanel2.but4;
 destroy .subpanel2.but5;
 destroy .subpanel2.but6;
+
 ###[but] is sub frame of subpanel2###
 frame .subpanel2.but1 -background #3E3E3E ;
 #bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
@@ -257,6 +290,22 @@ label .subpanel2.but6.lb2 -text "Contact Us" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
 
+bind .subpanel2.but1.b1 <Enter> {.subpanel2.but1.b1 config -bg #999999} 
+bind .subpanel2.but1.b1 <Leave> {.subpanel2.but1.b1 config -bg #3e3e3e}
+bind .subpanel2.but1.b2 <Enter> {.subpanel2.but1.b2 config -bg #999999} 
+bind .subpanel2.but1.b2 <Leave> {.subpanel2.but1.b2 config -bg #3e3e3e}
+bind .subpanel2.but2.b1 <Enter> {.subpanel2.but2.b1 config -bg #999999} 
+bind .subpanel2.but2.b1 <Leave> {.subpanel2.but2.b1 config -bg #3e3e3e}
+bind .subpanel2.but2.b2 <Enter> {.subpanel2.but2.b2 config -bg #999999} 
+bind .subpanel2.but2.b2 <Leave> {.subpanel2.but2.b2 config -bg #3e3e3e}
+bind .subpanel2.but3.b1 <Enter> {.subpanel2.but3.b1 config -bg #999999} 
+bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
+bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
+bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
+
+
+
+
  } -bg #555555
 bind  .subpanel1.b3 <Enter> {.subpanel1.b3 config -bg #999999;} 
 bind  .subpanel1.b3 <Leave> {.subpanel1.b3 config -bg #555555}
@@ -279,7 +328,17 @@ pack .subpanel1.b5  -side top
 label .subpanel1.lb5 -text "Delete" -fg white -bg #555555
 pack .subpanel1.lb5  -side top  
 
-button .subpanel1.b6 -text "Button6" -image [image create photo -file help.gif] -bg #555555 
+button .subpanel1.b6 -text "Button6" -image [image create photo -file help.gif] -bg #555555 -command {
+set mn .toolframe;
+toplevel $mn;
+wm title $mn "User's Manual";
+wm maxsize $mn 20 600
+wm minsize $mn 20 600
+wm geometry $mn -1400+90
+#wm resizable $mn 0 0
+frame $mn.subpanel -background #555555 -height 100 -width 100;
+pack $mn.subpanel -side left -fill both ;
+}
 bind  .subpanel1.b6 <Enter> {.subpanel1.b6 config -bg #999999;} 
 bind  .subpanel1.b6 <Leave> {.subpanel1.b6 config -bg #555555}
 pack .subpanel1.b6  -side top  -pady 10
@@ -312,6 +371,10 @@ button .mainpanel.top.ccc.b1 -text "Button1" -image [image create photo -file pi
 pack .mainpanel.top.ccc.b1  -side right  -padx 40
 button .mainpanel.top.ccc.b2 -text "Button2" -image [image create photo -file portrait.gif] -bg #555555
 pack .mainpanel.top.ccc.b2  -side right  -padx 40
+bind .mainpanel.top.ccc.b1 <Enter> {.mainpanel.top.ccc.b1 config -bg #999999} 
+bind .mainpanel.top.ccc.b1 <Leave> {.mainpanel.top.ccc.b1 config -bg #555555}
+bind .mainpanel.top.ccc.b2 <Enter> {.mainpanel.top.ccc.b2 config -bg #999999} 
+bind .mainpanel.top.ccc.b2 <Leave> {.mainpanel.top.ccc.b2 config -bg #555555}
 
 frame .mainpanel.cen -background #333333  -width 1000
 pack .mainpanel.cen -side top -fill both
@@ -513,6 +576,11 @@ pack $w.subpanel.but12.b2  -side left
 pack .subpanel3.ccc.b1  -side right  -padx 10 
 button .subpanel3.ccc.b2 -text "Button2"  -command "destroy .toolframe" -bg #3E3E3E
 pack .subpanel3.ccc.b2  -side right  -padx 10
+
+bind .subpanel3.ccc.b1 <Enter> {.subpanel3.ccc.b1 config -bg #999999} 
+bind .subpanel3.ccc.b1 <Leave> {.subpanel3.ccc.b1 config -bg #3e3e3e}
+bind .subpanel3.ccc.b2 <Enter> {.subpanel3.ccc.b2 config -bg #999999} 
+bind .subpanel3.ccc.b2 <Leave> {.subpanel3.ccc.b2 config -bg #3e3e3e}
 
 set score "Red : 0    Yellow : 0    Blue : 0"
 set red 0
