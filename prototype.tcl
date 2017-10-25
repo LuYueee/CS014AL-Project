@@ -1,4 +1,3 @@
-
 ######################################
 #	CS014AL Project: Image Editor	
 #	Window Prototype			       
@@ -407,6 +406,8 @@ pack .subpanel3 -side left -fill both -expand true
 label .subpanel3.label  -background #3E3E3E  -text "" -width 40
 pack .subpanel3.label -side bottom
 
+label .subpanel3.label1  -background #3E3E3E  -text "" -image [image create photo -file color.gif]
+pack .subpanel3.label1 -side top -pady 70
 
 
 frame .subpanel3.ccc -background  #3e3e3e -height 20
@@ -503,9 +504,8 @@ button $w.subpanel.but12.b1 -text "Button5" -bg #555555 -image [image create pho
 pack $w.subpanel.but12.b1  -side left  ;
 button $w.subpanel.but12.b2 -text "Button6" -bg #555555 -image [image create photo -file x.gif];
 pack $w.subpanel.but12.b2  -side left
-
-
 }
+
 pack .subpanel3.ccc.b1  -side right  -padx 10 
 button .subpanel3.ccc.b2 -text "Button2"  -command "destroy .toolframe" -bg #3E3E3E
 pack .subpanel3.ccc.b2  -side right  -padx 10
@@ -536,3 +536,8 @@ pack .subpanel3.score -side bottom -padx 2 -pady 2
 pack .subpanel3.red -side bottom -padx 2 -pady 2 
 pack .subpanel3.yellow -side bottom -padx 2 -pady 2 
 pack .subpanel3.blue -side bottom -padx 2 -pady 2
+
+
+
+#1.help menu
+#2.window size
