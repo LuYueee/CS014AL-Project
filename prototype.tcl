@@ -420,25 +420,32 @@ pack $w.subpanel -side left -fill both ;
 
 frame $w.subpanel.but1 -background #3E3E3E ;
 pack $w.subpanel.but1 -side top;
-button $w.subpanel.but1.b1 -text "Button1" -bg #555555;
+button $w.subpanel.but1.b1 -text "Button1" -bg #555555 -image [image create photo -file a.gif];
 pack $w.subpanel.but1.b1  -side left  ;
-button $w.subpanel.but1.b2 -text "Button2" -bg #555555;
+button $w.subpanel.but1.b2 -text "Button2" -bg #555555 -image [image create photo -file b.gif];
 pack $w.subpanel.but1.b2  -side left  ;
 
 
 frame $w.subpanel.but2 -background #555555 ;
 pack $w.subpanel.but2 -side top;
-button $w.subpanel.but2.b1 -text "Button3" -bg #555555;
+button $w.subpanel.but2.b1 -text "Button3" -bg #555555 -image [image create photo -file c.gif];
 pack $w.subpanel.but2.b1  -side left  ;
-button $w.subpanel.but2.b2 -text "Button4" -bg #555555;
+button $w.subpanel.but2.b2 -text "Button4" -bg #555555 -image [image create photo -file d.gif];
 pack $w.subpanel.but2.b2  -side left  ;
 
 frame $w.subpanel.but3 -background #555555 ;
 pack $w.subpanel.but3 -side top;
-button $w.subpanel.but3.b1 -text "Button5" -bg #555555;
+button $w.subpanel.but3.b1 -text "Button5" -bg #555555 -image [image create photo -file e.gif];
 pack $w.subpanel.but3.b1  -side left  ;
-button $w.subpanel.but3.b2 -text "Button6" -bg #555555;
+button $w.subpanel.but3.b2 -text "Button6" -bg #555555 -image [image create photo -file f.gif];
 pack $w.subpanel.but3.b2  -side left
+
+frame $w.subpanel.but4 -background #555555 ;
+pack $w.subpanel.but4 -side top;
+button $w.subpanel.but4.b1 -text "Button5" -bg #555555 -image [image create photo -file g.gif];
+pack $w.subpanel.but4.b1  -side left  ;
+button $w.subpanel.but4.b2 -text "Button6" -bg #555555 -image [image create photo -file h.gif];
+pack $w.subpanel.but4.b2  -side left
 
 
 }
