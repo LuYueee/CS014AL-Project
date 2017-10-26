@@ -5,7 +5,7 @@
 #	10/04/2017		               
 ######################################
 
-###10/04ㄩ跦擂埻倰票擁ㄛ??腔遺殤減膘###
+###10/04ㄩ跦擂埻?票擁ㄛ??腔遺?減膘###
 ###10/06ㄩAdd a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 ###10/13 : crate and distory windows && bind enter/leave event###
 ###10/13(2) : Mouse Event & - Command (crate buttons & destroy buttons); fix size of main/sub window (not complete)###
@@ -16,8 +16,8 @@
 
 wm title . "Image Editor"
 #wm maxsize . 1700 900
-wm minsize . 1445 765
-wm geometry . +2-50
+wm minsize . 1445 700
+wm geometry . +2-20
 wm resizable . 0 0
 
 ###background color
@@ -27,7 +27,7 @@ wm resizable . 0 0
 
 
 
-
+set tt 0
 
 #XO-
 frame .top -background #555555 -height 43 -width 1445
@@ -38,7 +38,7 @@ button .top.b1 -text "Button1" -command "exit" -bg #3e3e3e -image [image create 
 pack .top.b1  -side right  
 button .top.b2 -text "Button2" -bg #3e3e3e -image [image create photo -file minimize.gif]
 pack .top.b2  -side right  
-bind .top.b1 <Enter> {.top.b1 config -bg red} 
+bind .top.b1 <Enter> {.top.b1 config -bg #b20000} 
 bind .top.b1 <Leave> {.top.b1 config -bg #555555}
 bind .top.b2 <Enter> {.top.b2 config -bg #999999} 
 bind .top.b2 <Leave> {.top.b2 config -bg #555555}
@@ -70,10 +70,20 @@ frame .subpanel2.but1 -background #3E3E3E ;
 pack .subpanel2.but1 -side top;
 ##YiRan,Chen##
 button .subpanel2.but1.b1 -text "Button1"    -command {
+ set t .mainpanel.cen
+ set tt .mainpanel.cen.c
+ set _paint(top) $t
+ set _paint(width) 830
+ set _paint(height) 700
+
+ set _paint(bg) #333333
+ set _paint(color) white
+	
 
 set ttt $t.c
 if { $tt == $ttt } {
 destroy $tt
+set tt 0
 }
 
 package require Tk
@@ -108,19 +118,32 @@ set tt .mainpanel.cen.c
 
 set myImage [image create photo]
 $myImage read $filename
-$t.c create image 467.5 382.5 -image $myImage 
+$t.c create image 415 350 -image $myImage 
 }  -bg #3E3E3E -image [image create photo -file singlepic.gif];
 ##YiRan,Chen##
 pack .subpanel2.but1.b1  -side left -padx 20 ;
 
 
 button .subpanel2.but1.b2 -text "Button2" -bg #3E3E3E -image [image create photo -file multiplepic.gif]   -command {
-
-set ttt $t.c
+ set t .mainpanel.cen
+ set tt .mainpanel.cen.c
+ set _paint(top) $t
+ set _paint(width) 830
+ set _paint(height) 700
+ set _paint(bg) #333333
+ set _paint(color) white
+ 
+ set ttt $t.c
 if { $tt == $ttt } {
-destroy $tt
+} else {
+	 set _paint(can) [canvas $tt \
+    -width $_paint(width) \
+    -height $_paint(height) \
+    -background $_paint(bg) \
+    ]
+ grid $_paint(can) -row 0 -column 0		
 }
-
+	
 package require Tk
 
 set types {
@@ -140,28 +163,19 @@ foreach filename $filenameList {
         puts "I found $filename"      
      }
 }
-
-set tt .mainpanel.cen.c
-
- set _paint(can) [canvas $tt \
-    -width $_paint(width) \
-    -height $_paint(height) \
-    -background $_paint(bg) \
-    ]
- grid $_paint(can) -row 0 -column 0
  
-
 set myImage [image create photo]
 $myImage read $filename
-$t.c create image 467.5 382.5 -image $myImage 
+$t.c create image 415 350 -image $myImage 
+
 } ;
 pack .subpanel2.but1.b2  -side left -padx 20 ;
 
 frame .subpanel2.but4 -background #3E3E3E ;
 label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E 
-pack .subpanel2.but4.lb1  -side left  -padx 20 
+pack .subpanel2.but4.lb1  -side right  -padx 17 
 label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
-pack .subpanel2.but4.lb2  -side left  -padx 20 
+pack .subpanel2.but4.lb2  -side right  -padx 17
 pack .subpanel2.but4 -side top;
 
 frame .subpanel2.but2 -background #3E3E3E ;
@@ -185,10 +199,10 @@ button .subpanel2.but3.b2 -text "Button6" -bg #3E3E3E -image [image create photo
 pack .subpanel2.but3.b2  -side left -padx 20;
 
 frame .subpanel2.but6 -background #3E3E3E ;
-label .subpanel2.but6.lb1 -text "Best Collection" -fg white -bg #3E3E3E
-pack .subpanel2.but6.lb1  -side left  -padx 20 
+label .subpanel2.but6.lb1 -text "Collection" -fg white -bg #3E3E3E
+pack .subpanel2.but6.lb1  -side left  -padx 20
 label .subpanel2.but6.lb2 -text "Print" -fg white -bg #3E3E3E
-pack .subpanel2.but6.lb2  -side left  -padx 20 
+pack .subpanel2.but6.lb2  -side left   -padx 20
 pack .subpanel2.but6 -side top;
 
 
@@ -216,10 +230,25 @@ pack .subpanel1.lb1  -side top
 
  button .subpanel1.b4 -text "Button4" -image [image create photo -file newfile.gif] -command {
  	
+  set t .mainpanel.cen
+ set tt .mainpanel.cen.c
+ set _paint(top) $t
+ set _paint(width) 830
+ set _paint(height) 700
+
+ set _paint(bg) #333333
+ set _paint(color) white
+	
+
+set ttt $t.c
+if { $tt == $ttt } {
+	destroy $tt
+} 
+ 	
  set t .mainpanel.cen
  set _paint(top) $t
- set _paint(width) 935
- set _paint(height) 765
+ set _paint(width) 830
+ set _paint(height) 700
 
  set _paint(bg) #333333
  set _paint(color) white
@@ -453,6 +482,7 @@ button .subpanel1.b6 -text "Button5" -image [image create photo -file delete.gif
 set ttt $t.c
 if { $tt == $ttt } {
 destroy $tt
+set tt 0
 }
 }
 bind  .subpanel1.b6 <Enter> {.subpanel1.b6 config -bg #999999;} 
@@ -484,8 +514,8 @@ pack .subpanel1.lb7  -side top
 
 frame .subpanel2 -background #3E3E3E -height 680 -width 280
 pack .subpanel2 -side left -fill both -expand true
-###婓藩?frame腔郔菁狟樓label參frame?酘善衵??###
-###width 40岆郔苤趙?馱撿?腔?僅ㄗ綴剒猁?淕ㄘ###
+###婓藩?frame腔郔菁狟樓?label參frame?酘善衵???###
+###width 40岆郔苤趙?馱撿?腔?僅ㄗ綴?剒猁?淕ㄘ###
 label .subpanel2.label  -background #3E3E3E  -text "" -width 37
 pack .subpanel2.label -side bottom
 
@@ -494,9 +524,9 @@ pack .subpanel2.label -side bottom
 
 
 #Operation Field
-frame .mainpanel -background #333333 -height 680 -width 850
+frame .mainpanel -background #333333 -height 680 -width 830
 pack .mainpanel -side left -fill both -expand true
-frame .mainpanel.top -background #333333  -width 850
+frame .mainpanel.top -background #333333  -width 830
 pack .mainpanel.top -side top -fill both
 frame .mainpanel.top.ccc -background #333333  -height 17
 pack .mainpanel.top.ccc -side bottom 
@@ -509,11 +539,11 @@ bind .mainpanel.top.ccc.b1 <Leave> {.mainpanel.top.ccc.b1 config -bg #555555}
 bind .mainpanel.top.ccc.b2 <Enter> {.mainpanel.top.ccc.b2 config -bg #999999} 
 bind .mainpanel.top.ccc.b2 <Leave> {.mainpanel.top.ccc.b2 config -bg #555555}
 
-frame .mainpanel.cen -background #333333  -width 850
+frame .mainpanel.cen -background #333333  -width 830
 pack .mainpanel.cen -side top -fill both
 
 
-frame .mainpanel.bottom -background #555555  -width 850
+frame .mainpanel.bottom -background #555555  -width 830
 pack .mainpanel.bottom -side bottom -fill both
 
 
@@ -532,14 +562,18 @@ pack .mainpanel.label -side bottom
 
 
 #Tool Bar 3
-frame .subpanel3 -background #3E3E3E -height 800 -width 113
+frame .subpanel3 -background #3E3E3E -height 830 -width 113
 pack .subpanel3 -side left -fill both -expand true
-label .subpanel3.label  -background #3E3E3E  -text "" -width 34
+label .subpanel3.label  -background #3E3E3E  -text "" -width 40
 pack .subpanel3.label -side bottom
+frame .subpanel3.top -background #3E3E3E 
+pack .subpanel3.top -side top -fill both -expand true
+label .subpanel3.top.label  -background #3E3E3E  -text "" -width 205 -image [image create photo -file color.gif]
+pack .subpanel3.top.label -side top -pady 10
 
-label .subpanel3.label1  -background #3E3E3E  -text "" -image [image create photo -file color.gif]
-pack .subpanel3.label1 -side top -pady 70
+#####color.gif########
 
+########################
 
 frame .subpanel3.ccc -background  #3e3e3e -height 20
 pack .subpanel3.ccc -side bottom -pady 20
@@ -549,7 +583,7 @@ toplevel $w;
 wm title $w "Tool Box";
 #wm maxsize $w 20 600
 #wm minsize $w 20 600
-wm geometry $w +1110-330
+wm geometry $w +1110-200
 wm resizable $w 0 0
 frame $w.subpanel -background #555555;
 pack $w.subpanel -side left -fill both ;
@@ -673,32 +707,70 @@ bind .subpanel3.ccc.b1 <Leave> {.subpanel3.ccc.b1 config -bg #3e3e3e}
 bind .subpanel3.ccc.b2 <Enter> {.subpanel3.ccc.b2 config -bg #999999} 
 bind .subpanel3.ccc.b2 <Leave> {.subpanel3.ccc.b2 config -bg #3e3e3e}
 
-set score "Red : 0    Yellow : 0    Blue : 0"
+
+################################# choose color#######################################
+
+
+set score "Red : 0    Green : 0    Blue : 0"
 set red 0
-set yellow 0
+set green 0
 set blue 0
+set redinhex 1
+set greeninhex 2
+set blueinhex 3
+set colorr #
+set sss 0
+set ss 0
+set ssssss ert
+set ten 10
+set zero 0
+
 
 #display in the buttom
 proc display {val} {
-global red yellow blue score
-set score [format {Red : %d    Yellow : %d    Blue : %d} $red $yellow $blue]
+global red green blue redinhex greeninhex blueinhex score colorr sss ss ssssss ten zero
+
+set redinhex [format %02x $red]
+set greeninhex [format %02x $green]
+set blueinhex [format %02x $blue]
+set score [format {Red : %s    Green : %s    Blue : %s} $red $green $blue]
+
+
+set colorr #
+append colorr $redinhex $greeninhex $blueinhex
+
+destroy $ss
+set ss .subpanel3.myCanvass	
+canvas $ss -background $colorr -width 5c -height 50
+pack $ss -side bottom -padx 2 -pady 2	
+
+destroy $ssssss
+set ssssss .subpanel3.label1	
+label  $ssssss -text $colorr -background #3E3E3E -fg white 
+pack $ssssss -side bottom -padx 2 -pady 2
+
+		
 }
 
-scale .subpanel3.red -label "Red" -variable red -background #555555 \
--length 5c -width .25c -from 0 -to 30 \
+scale .subpanel3.red -label "Red" -variable red -background #555555 -fg #FFFFFF \
+-length 5c -width .25c -from 0 -to 255 \
 -orient horizontal -command {display}
-scale .subpanel3.yellow -label "Yellow" -variable yellow -background #555555 \
--length 5c -width .25c -from 0 -to 30 \
+scale .subpanel3.green -label "Green" -variable green -background #555555 -fg #FFFFFF \
+-length 5c -width .25c -from 0 -to 255 \
 -orient horizontal -command {display} 
-scale .subpanel3.blue -label "Blue" -variable blue -background #555555 \
--length 5c -width .25c -from 0 -to 30 \
+scale .subpanel3.blue -label "Blue" -variable blue -background #555555 -fg #FFFFFF \
+-length 5c -width .25c -from 0 -to 255 \
 -orient horizontal -command {display}
+
+
 label .subpanel3.score -background #3E3E3E -fg white -textvariable score
 
 pack .subpanel3.score -side bottom -padx 2 -pady 2 
 pack .subpanel3.red -side bottom -padx 2 -pady 2 
-pack .subpanel3.yellow -side bottom -padx 2 -pady 2 
+pack .subpanel3.green -side bottom -padx 2 -pady 2 
 pack .subpanel3.blue -side bottom -padx 2 -pady 2
 
 
+
+########################choose the color###########################################
 
