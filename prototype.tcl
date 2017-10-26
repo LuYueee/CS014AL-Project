@@ -172,9 +172,9 @@ $t.c create image 415 350 -image $myImage
 pack .subpanel2.but1.b2  -side left -padx 20 ;
 
 frame .subpanel2.but4 -background #3E3E3E ;
-label .subpanel2.but4.lb1 -text "Single Picture" -fg white -bg #3E3E3E 
+label .subpanel2.but4.lb1 -text "Multiple Picture" -fg white -bg #3E3E3E 
 pack .subpanel2.but4.lb1  -side right  -padx 17 
-label .subpanel2.but4.lb2 -text "Multiple Picture" -fg white -bg #3E3E3E
+label .subpanel2.but4.lb2 -text "Single Picture" -fg white -bg #3E3E3E
 pack .subpanel2.but4.lb2  -side right  -padx 17
 pack .subpanel2.but4 -side top;
 
@@ -225,7 +225,7 @@ bind  .subpanel1.b1 <Enter> {.subpanel1.b1 config -bg #999999;}
 bind  .subpanel1.b1 <Leave> {.subpanel1.b1 config -bg #555555}
 pack .subpanel1.b1  -side top 
 
-label .subpanel1.lb1 -text "Open" -fg white -bg #555555
+label .subpanel1.lb1 -text "File" -fg white -bg #555555
 pack .subpanel1.lb1  -side top  
 
  button .subpanel1.b4 -text "Button4" -image [image create photo -file newfile.gif] -command {
@@ -312,12 +312,14 @@ label .subpanel1.lb4 -text "New" -fg white -bg #555555
 pack .subpanel1.lb4  -side top  
 
 button .subpanel1.b2 -text "Button2" -image [image create photo -file edit.gif]   -command {
-destroy .subpanel2.but1;
+#destory buttons which might be previously created 
+destroy .subpanel2.but1; 
 destroy .subpanel2.but2;
 destroy .subpanel2.but3;
 destroy .subpanel2.but4;
 destroy .subpanel2.but5;
 destroy .subpanel2.but6;
+#destory buttons which might be previously created 
 
 ###[but] is sub frame of subpanel2###
 frame .subpanel2.but1 -background #3E3E3E ;
@@ -366,7 +368,7 @@ label .subpanel2.but6.lb2 -text "Click" -fg white -bg #3E3E3E
 pack .subpanel2.but6.lb2  -side left  -padx 20 
 pack .subpanel2.but6 -side top;
 
-
+#Mouse Event#
 bind .subpanel2.but1.b1 <Enter> {.subpanel2.but1.b1 config -bg #999999} 
 bind .subpanel2.but1.b1 <Leave> {.subpanel2.but1.b1 config -bg #3e3e3e}
 bind .subpanel2.but1.b2 <Enter> {.subpanel2.but1.b2 config -bg #999999} 
@@ -379,6 +381,7 @@ bind .subpanel2.but3.b1 <Enter> {.subpanel2.but3.b1 config -bg #999999}
 bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
 bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
 bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
+#Mouse Event#
  }  -bg #555555
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #999999;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
@@ -514,10 +517,9 @@ pack .subpanel1.lb7  -side top
 
 frame .subpanel2 -background #3E3E3E -height 680 -width 280
 pack .subpanel2 -side left -fill both -expand true
-###婓藩?frame腔郔菁狟樓?label參frame?酘善衵???###
-###width 40岆郔苤趙?馱撿?腔?僅ㄗ綴?剒猁?淕ㄘ###
 label .subpanel2.label  -background #3E3E3E  -text "" -width 37
 pack .subpanel2.label -side bottom
+
 
 
 
