@@ -717,8 +717,6 @@ set colorr #
 set sss 0
 set ss 0
 set ssssss ert
-set ten 10
-set zero 0
 
 
 #display in the buttom
