@@ -5,11 +5,7 @@
 #	10/04/2017-10/27/2017	               
 ######################################
 
-###10/04ㄩ跦擂埻?票擁ㄛ??腔遺?減膘###
-###10/06ㄩAdd a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
-###10/13 : crate and distory windows && bind enter/leave event###
-###10/13(2) : Mouse Event & - Command (crate buttons & destroy buttons); fix size of main/sub window (not complete)###
-##10/25#(1)***help menu (2)window size (3)bind event
+
 
 #name of window Image Editor
 
@@ -19,10 +15,6 @@ wm minsize . 1445 700
 wm geometry . +2-60
 wm resizable . 0 0
 
-###background color
-#333333 每 mainpanel
-#3e3e3e 每subpanel
-#555555 -menubar
 
 
 set tt 0
@@ -576,6 +568,7 @@ frame .subpanel3.ccc -background  #3e3e3e -height 20
 pack .subpanel3.ccc -side bottom -pady 20
 button .subpanel3.ccc.b1 -text "Button1" -bg #3e3e3e -image [image create photo -file toolbar.gif] -command {
 set w .toolframe;
+catch {destroy $w}
 toplevel $w;
 wm title $w "Tool Box";
 #wm maxsize $w 20 600
