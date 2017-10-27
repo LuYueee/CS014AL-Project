@@ -1,15 +1,14 @@
 ######################################
 #	CS014AL Project: Image Editor	
 #	Window Prototype			       
-#	Yue,Lu				               
-#	10/04/2017		               
+#	Group 15				               
+#	10/04/2017-10/27/2017	               
 ######################################
 
 ###10/04ㄩ跦擂埻?票擁ㄛ??腔遺?減膘###
 ###10/06ㄩAdd a subpanel at the bottom of mainpanel (for crtl+z) and a panel at the top of all panels for maximize,minimize and exit###
 ###10/13 : crate and distory windows && bind enter/leave event###
 ###10/13(2) : Mouse Event & - Command (crate buttons & destroy buttons); fix size of main/sub window (not complete)###
-
 ##10/25#(1)***help menu (2)window size (3)bind event
 
 #name of window Image Editor
@@ -17,7 +16,7 @@
 wm title . "Image Editor"
 #wm maxsize . 1700 900
 wm minsize . 1445 700
-wm geometry . +2-20
+wm geometry . +2-60
 wm resizable . 0 0
 
 ###background color
@@ -26,13 +25,12 @@ wm resizable . 0 0
 #555555 -menubar
 
 
-
 set tt 0
 
 #XO-
 frame .top -background #555555 -height 43 -width 1445
 pack .top -side top -fill both 
-###?爵祥?离-expand###
+
 ### Maximize Minimize Exit###
 button .top.b1 -text "Button1" -command "exit" -bg #3e3e3e -image [image create photo -file close.gif]
 pack .top.b1  -side right  
@@ -49,11 +47,11 @@ label .top.label  -background #3E3E3E   -text "" -width 192
 
 #Menu Bar
 frame .subpanel1 -background #555555  -height 800 
-###?爵祥?离-expand###
+
 pack .subpanel1 -side left -fill both 
 label .subpanel1.label  -background #555555  -text "" -width 4
 pack .subpanel1.label -side bottom
-###郔籥?腔馱撿?ㄛ偌??离top??奻厘狟齬###
+
 
 ###1. destory previous frame in subpanel2###
 ###2. create new frame in subpanel2###
@@ -382,6 +380,7 @@ bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
 bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
 bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
 #Mouse Event#
+
  }  -bg #555555
 bind  .subpanel1.b2 <Enter> {.subpanel1.b2 config -bg #999999;} 
 bind  .subpanel1.b2 <Leave> {.subpanel1.b2 config -bg #555555}
@@ -459,9 +458,6 @@ bind .subpanel2.but3.b1 <Leave> {.subpanel2.but3.b1 config -bg #3e3e3e}
 bind .subpanel2.but3.b2 <Enter> {.subpanel2.but3.b2 config -bg #999999} 
 bind .subpanel2.but3.b2 <Leave> {.subpanel2.but3.b2 config -bg #3e3e3e}
 
-
-
-
  } -bg #555555
 
 
@@ -495,15 +491,20 @@ label .subpanel1.lb6 -text "Delete" -fg white -bg #555555
 pack .subpanel1.lb6  -side top  
 
 button .subpanel1.b7 -text "Button7" -image [image create photo -file help.gif] -bg #555555 -command {
-set mn .toolframe;
-toplevel $mn;
-wm title $mn "User's Manual";
-wm maxsize $mn 20 600
-wm minsize $mn 20 600
-wm geometry $mn -1400+90
-#wm resizable $mn 0 0
-frame $mn.subpanel -background #555555 -height 85 -width 85;
-pack $mn.subpanel -side left -fill both ;
+set m .button
+catch {destroy $m}
+toplevel $m
+wm title $m "User Manual"
+wm geometry $m +500+400
+frame $m.main -bg #3E3E3E
+pack $m.main -side top
+label $m.main.msg -bg #3E3E3E -fg white -wraplength 5i  -borderwidth 20 -justify left -text "◆ Click “File” in the menu bar to open picture file(s),take pictures,stitch pictures,view your picture collection or print your picture.\n◆ Click “New” in the menu bar to create a drawing board in the operation panel.\n◆ Click “Edit” in the menu bar to zoom in and zoom out picture,view full screen picture or contrast original and edited picture.\n◆ Click “Share” in the menu bar to share your picture via email,Facebook,Twitter,Instagram.\n◆ Click “Delete”in the menu bar to delete the drawing board you created before.\n◆ Click “Help” in the menu bar for more information.\n◆ Click “Tool Bar” on the bottom right corner to open the drawing tool bar.\n◆ Click “Close Tool Bar” on the bottom right corner to close the drawing tool bar.\n◆ Move the “Red””Green””Blue” slider between 0 and 255 to balance the tone of your picture."
+pack $m.main.msg -side top
+frame $m.main.buttons -bg #3E3E3E
+pack $m.main.buttons -side bottom -fill x -pady 2m 
+button $m.main.buttons.ok -text OK -command "destroy $m" -width 10  -bg #555558 -fg white
+button $m.main.buttons.cancel -text "Cancel" -command "destroy $m" -width 10   -bg #555558 -fg white
+pack $m.main.buttons.cancel $m.main.buttons.ok -side left -expand 1 -pady 10
 }
 bind  .subpanel1.b7 <Enter> {.subpanel1.b7 config -bg #999999;} 
 bind  .subpanel1.b7 <Leave> {.subpanel1.b7 config -bg #555555}
@@ -519,9 +520,6 @@ frame .subpanel2 -background #3E3E3E -height 680 -width 280
 pack .subpanel2 -side left -fill both -expand true
 label .subpanel2.label  -background #3E3E3E  -text "" -width 37
 pack .subpanel2.label -side bottom
-
-
-
 
 
 
@@ -573,9 +571,6 @@ pack .subpanel3.top -side top -fill both -expand true
 label .subpanel3.top.label  -background #3E3E3E  -text "" -width 205 -image [image create photo -file color.gif]
 pack .subpanel3.top.label -side top -pady 10
 
-#####color.gif########
-
-########################
 
 frame .subpanel3.ccc -background  #3e3e3e -height 20
 pack .subpanel3.ccc -side bottom -pady 20
@@ -585,7 +580,7 @@ toplevel $w;
 wm title $w "Tool Box";
 #wm maxsize $w 20 600
 #wm minsize $w 20 600
-wm geometry $w +1110-200
+wm geometry $w +1110-300
 wm resizable $w 0 0
 frame $w.subpanel -background #555555;
 pack $w.subpanel -side left -fill both ;
@@ -710,8 +705,6 @@ bind .subpanel3.ccc.b2 <Enter> {.subpanel3.ccc.b2 config -bg #999999}
 bind .subpanel3.ccc.b2 <Leave> {.subpanel3.ccc.b2 config -bg #3e3e3e}
 
 
-################################# choose color#######################################
-
 
 set score "Red : 0    Green : 0    Blue : 0"
 set red 0
@@ -774,5 +767,4 @@ pack .subpanel3.blue -side bottom -padx 2 -pady 2
 
 
 
-########################choose the color###########################################
-
+###################################################################
