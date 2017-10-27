@@ -488,6 +488,7 @@ catch {destroy $m}
 toplevel $m
 wm title $m "User Manual"
 wm geometry $m +500+400
+wm resizable $m 0 0
 frame $m.main -bg #3E3E3E
 pack $m.main -side top
 label $m.main.msg -bg #3E3E3E -fg white -wraplength 5i  -borderwidth 20 -justify left -text "◆ Click “File” in the menu bar to open picture file(s),take pictures,stitch pictures,view your picture collection or print your picture.\n◆ Click “New” in the menu bar to create a drawing board in the operation panel.\n◆ Click “Edit” in the menu bar to zoom in and zoom out picture,view full screen picture or contrast original and edited picture.\n◆ Click “Share” in the menu bar to share your picture via email,Facebook,Twitter,Instagram.\n◆ Click “Delete”in the menu bar to delete the drawing board you created before.\n◆ Click “Help” in the menu bar for more information.\n◆ Click “Tool Bar” on the bottom right corner to open the drawing tool bar.\n◆ Click “Close Tool Bar” on the bottom right corner to close the drawing tool bar.\n◆ Move the “Red””Green””Blue” slider between 0 and 255 to balance the tone of your picture."
