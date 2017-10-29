@@ -1,9 +1,9 @@
-######################################
+########################################################################################
 #	CS014AL Project: Image Editor	
 #	Window Prototype			       
 #	Group 15				               
 #	10/04/2017-10/27/2017	               
-######################################
+########################################################################################
 
 
 
@@ -19,11 +19,9 @@ wm resizable . 0 0
 
 set tt 0
 
-#XO-
+#close window & minimize window
 frame .top -background #555555 -height 43 -width 1445
 pack .top -side top -fill both 
-
-### Maximize Minimize Exit###
 button .top.b1 -text "Button1" -command "exit" -bg #3e3e3e -image [image create photo -file close.gif]
 pack .top.b1  -side right  
 button .top.b2 -text "Button2" -bg #3e3e3e -image [image create photo -file minimize.gif]
@@ -45,8 +43,6 @@ label .subpanel1.label  -background #555555  -text "" -width 4
 pack .subpanel1.label -side bottom
 
 
-###1. destory previous frame in subpanel2###
-###2. create new frame in subpanel2###
 button .subpanel1.b1 -text "Button1" -command {
 destroy .subpanel2.but1;
 destroy .subpanel2.but2;
@@ -54,7 +50,9 @@ destroy .subpanel2.but3;
 destroy .subpanel2.but4;
 destroy .subpanel2.but5;
 destroy .subpanel2.but6;
-###[but] is sub frame of subpanel2###
+#1. destory previous frame in subpanel2
+#2. create new frame in subpanel2
+#[but] is sub frame of subpanel2
 frame .subpanel2.but1 -background #3E3E3E ;
 
 pack .subpanel2.but1 -side top;
@@ -66,7 +64,7 @@ button .subpanel2.but1.b1 -text "Button1"    -command {
  set _paint(width) 830
  set _paint(height) 700
 
- set _paint(bg) #333333
+ set _paint(bg) white
  set _paint(color) white
 	
 
@@ -120,7 +118,7 @@ button .subpanel2.but1.b2 -text "Button2" -bg #3E3E3E -image [image create photo
  set _paint(top) $t
  set _paint(width) 830
  set _paint(height) 700
- set _paint(bg) #333333
+ set _paint(bg) white
  set _paint(color) white
  
  set ttt $t.c
@@ -730,14 +728,10 @@ destroy $ss
 set ss .subpanel3.myCanvass	
 canvas $ss -background $colorr -width 5c -height 50
 pack $ss -side bottom -padx 2 -pady 2	
-
 destroy $ssssss
 set ssssss .subpanel3.label1	
 label  $ssssss -text $colorr -background #3E3E3E -fg white 
-
-
 pack $ssssss -side bottom -padx 2 -pady 2
-
 		
 }
 
@@ -759,6 +753,4 @@ pack .subpanel3.red -side bottom -padx 2 -pady 2
 pack .subpanel3.green -side bottom -padx 2 -pady 2 
 pack .subpanel3.blue -side bottom -padx 2 -pady 2
 
-
-
-###################################################################
+###End of Image Editor###
