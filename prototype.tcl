@@ -240,8 +240,8 @@ if { $tt == $ttt } {
  set _paint(width) 830
  set _paint(height) 700
 
- set _paint(bg) #333333
- set _paint(color) white
+ set _paint(bg) white
+ set _paint(color) $colorr
 
  # Canvas
   set tt $t.c 
@@ -734,6 +734,8 @@ pack $ss -side bottom -padx 2 -pady 2
 destroy $ssssss
 set ssssss .subpanel3.label1	
 label  $ssssss -text $colorr -background #3E3E3E -fg white 
+
+
 pack $ssssss -side bottom -padx 2 -pady 2
 
 		
