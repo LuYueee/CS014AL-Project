@@ -30,7 +30,7 @@ bind .top.b1 <Enter> {.top.b1 config -bg #b20000}
 bind .top.b1 <Leave> {.top.b1 config -bg #555555}
 bind .top.b2 <Enter> {.top.b2 config -bg #999999} 
 bind .top.b2 <Leave> {.top.b2 config -bg #555555}
-###label must be at the end of mainpanel code###
+#label must be at the end of mainpanel code
 label .top.label  -background #3E3E3E   -text "" -width 192
 
 
@@ -56,7 +56,7 @@ destroy .subpanel2.but6;
 frame .subpanel2.but1 -background #3E3E3E ;
 
 pack .subpanel2.but1 -side top;
-##YiRan,Chen##
+
 button .subpanel2.but1.b1 -text "Button1"    -command {
  set t .mainpanel.cen
  set tt .mainpanel.cen.c
@@ -108,7 +108,8 @@ set myImage [image create photo]
 $myImage read $filename
 $t.c create image 415 350 -image $myImage 
 }  -bg #3E3E3E -image [image create photo -file singlepic.gif];
-##YiRan,Chen##
+
+
 pack .subpanel2.but1.b1  -side left -padx 20 ;
 
 
@@ -309,7 +310,7 @@ destroy .subpanel2.but5;
 destroy .subpanel2.but6;
 #destory buttons which might be previously created 
 
-###[but] is sub frame of subpanel2###
+#[but] is sub frame of subpanel2
 frame .subpanel2.but1 -background #3E3E3E ;
 #bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
 #bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
@@ -386,7 +387,7 @@ destroy .subpanel2.but4;
 destroy .subpanel2.but5;
 destroy .subpanel2.but6;
 
-###[but] is sub frame of subpanel2###
+#[but] is sub frame of subpanel2
 frame .subpanel2.but1 -background #3E3E3E ;
 #bind .subpanel2.but1 <Enter> {.subpanel2 config -bg red} 
 #bind .subpanel2.but1 <Leave> {.subpanel2 config -bg white}
@@ -537,17 +538,15 @@ pack .mainpanel.cen -side top -fill both
 frame .mainpanel.bottom -background #555555  -width 830
 pack .mainpanel.bottom -side bottom -fill both
 
-
-###Modifies by Yiran, Chen###
 frame .mainpanel.bottom.ccc -background #555555 -height 20
 pack .mainpanel.bottom.ccc -side bottom 
 button .mainpanel.bottom.ccc.b1 -text "Button1" -image [image create photo -file right.gif] -bg #555555
 pack .mainpanel.bottom.ccc.b1  -side right  -padx 10 
 button .mainpanel.bottom.ccc.b2 -text "Button2" -image [image create photo -file left.gif] -bg #555555
 pack .mainpanel.bottom.ccc.b2  -side right  -padx 10
-###Modifies by Yiran, Chen###
 
-###label must be at the end of mainpanel code###
+
+#label must be at the end of mainpanel code
 label .mainpanel.label  -background #333333  -text "" -width 113
 pack .mainpanel.label -side bottom
 
