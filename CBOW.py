@@ -22,11 +22,11 @@ import os
 class word2vec():
     def __init__(self,
                  vocab_list=None,
-                 embedding_size=200,
+                 embedding_size=None,
                  win_len=None, # 单边窗口长
-                 num_sampled=1000,
-                 learning_rate=1.0,
-                 logdir='/tmp/simple_word2vec',
+                 num_sampled=None,
+                 learning_rate=None,
+                 logdir=None,
                  model_path= None
                  ):
 
@@ -270,27 +270,28 @@ class word2vec():
         batch_inputs = np.array(batch_inputs,dtype=np.int32).T                #int32因为是id值
         batch_labels = np.array(batch_labels,dtype=np.int32)
         batch_labels = np.reshape(batch_labels,[batch_labels.__len__(),1])  #行->列
-
-        feed_dict = {
-            self.train_inputs: batch_inputs,
-            self.train_labels: batch_labels
-        }
-        _, loss_val, summary_str = self.sess.run([self.train_op,self.loss,self.merged_summary_op], feed_dict=feed_dict)
-        #self.train_op迭代得到损失值
-        # train loss
-        self.train_loss_records.append(loss_val)
-        # self.train_loss_k10 = sum(self.train_loss_records)/self.train_loss_records.__len__()
-        self.train_loss_k10 = np.mean(self.train_loss_records)
-        if self.train_sents_num % 1000 == 0 :
-            self.summary_writer.add_summary(summary_str,self.train_sents_num)
-            print("{a} sentences dealed, loss: {b}"
-                  .format(a=self.train_sents_num,b=self.train_loss_k10))
-
-        # train times
-        #打印训练内容
-        self.train_words_num += batch_inputs.__len__()
-        self.train_sents_num += input_sentence.__len__()
-        self.train_times_num += 1
+        # len(batch_inputs)>0: check if context of current word is null
+        if len(batch_inputs)>0 and len(batch_inputs.T)>0:
+            feed_dict = {
+                self.train_inputs: batch_inputs,
+                self.train_labels: batch_labels
+            }
+            _, loss_val, summary_str = self.sess.run([self.train_op,self.loss,self.merged_summary_op], feed_dict=feed_dict)
+            #self.train_op迭代得到损失值
+            # train loss
+            self.train_loss_records.append(loss_val)
+            # self.train_loss_k10 = sum(self.train_loss_records)/self.train_loss_records.__len__()
+            self.train_loss_k10 = np.mean(self.train_loss_records)
+            if self.train_sents_num % 1000 == 0 :
+                self.summary_writer.add_summary(summary_str,self.train_sents_num)
+                print("{a} sentences dealed, loss: {b}"
+                      .format(a=self.train_sents_num,b=self.train_loss_k10))
+    
+            # train times
+            #打印训练内容
+            self.train_words_num += batch_inputs.__len__()
+            self.train_sents_num += input_sentence.__len__()
+            self.train_times_num += 1
 
     #计算相似度
     def cal_similarity(self,test_word_id_list,top_k=10):
@@ -390,7 +391,7 @@ if __name__=='__main__':
     raw_word_list = []
     sentence_list = []
     #Comment_New.txt 'utf-8'
-    with open('10K.txt',encoding='gbk') as f:
+    with open('Comment_New.txt',encoding='utf-8') as f:
         line = f.readline()
         while line:
             #每一行的换行符\n去掉
@@ -442,7 +443,7 @@ if __name__=='__main__':
     #most_common(n)提取最常见的n个词 
     #word_count = word_count.most_common(100)
     
-    word_count = word_count.most_common(100)
+    word_count = word_count.most_common(15000)
     #word_count.most_common(10)后是一个词对应一个词频
     #word_count变成元祖列表[('哈哈哈', 12),('厉害', 4),(),...]
     #只拿第一维x[0]把单词拿出来
@@ -452,12 +453,12 @@ if __name__=='__main__':
 
     #word2vec类
     # 创建模型，训练
-    w2v = word2vec(vocab_list=word_list,    # 词典集 （语料库）
-                   embedding_size=300,      #词向量维度
-                   win_len=2,
-                   learning_rate=0.1,         #学习率
-                   num_sampled=100,         # 负采样个数
-                   logdir='/tmp/280')       # tensorboard记录地址
+    w2v = word2vec(vocab_list=word_list,    #   词典集 （语料库）
+                   embedding_size=300,      #   词向量维度 不能动
+                   win_len=4,               #   滑动窗口 越大越好
+                   learning_rate=1,         #   学习率 越小越好
+                   num_sampled=100,         # 负采样个数 不能动
+                   logdir='/tmp/simple_word2vec')       # tensorboard记录地址
                    
                    
     num_steps = 10000
@@ -469,7 +470,7 @@ if __name__=='__main__':
     w2v.save_model('model')
     #保存模型  
     w2v.load_model('model') 
-    test_word = ['北京']
+    test_word = ['北京','冬奥会','中国','冠军','韩国','裁判','犯规','辣鸡']
     test_id = [word_list.index(x) for x in test_word]
     #计算相似度
     test_words,near_words,sim_mean,sim_var = w2v.cal_similarity(test_id)
