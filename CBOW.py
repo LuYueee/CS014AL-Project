@@ -3,6 +3,8 @@
 Created on Mon Mar  5 12:58:28 2018
 
 @author: windows
+
+
 """
 import random
 import tensorflow as tf
@@ -43,9 +45,9 @@ class word2vec():
             self.learning_rate  = learning_rate
             self.logdir         = logdir
             ##############################################################################
-            self.valid_size     = 16  # Random set of words to evaluate similarity on.
-            self.valid_window   = 100  # Only pick dev samples in the head of the distribution.
-            self.valid_examples = np.array(random.sample(range(self.valid_window), self.valid_size))
+            #self.valid_size     = 16  # Random set of words to evaluate similarity on.
+            #self.valid_window   = 100  # Only pick dev samples in the head of the distribution.
+            #self.valid_examples = np.array(random.sample(range(self.valid_window), self.valid_size))
             ##############################################################################
             
             self.word2id = {}   # word => id 的映射
@@ -235,27 +237,35 @@ class word2vec():
                 win_inputs=[]
                 for index in range(start,end):          #在上下文区间遍历
                     if index == i:                      #去掉除了上下文的当前词
+                    ##################################get default return null id: default=self.vocab_size-1
                         label_id=self.word2id.get(sent[i])
-                        batch_labels.append(label_id)
-                        if not (label_id):
-                            continue
+                        if label_id is None:
+                            # if current word does not exist in top 90% frequency vocab_list
+                            # add null id [vocab_size-1]
+                            batch_labels.append(self.vocab_size-1)
+                        else:
+                            batch_labels.append(label_id)
+
                         #continue
                     else:                               #不一致则输入上下文
                         input_id=self.word2id.get(sent[index])
-                        win_inputs.append(input_id)
-                        if not (input_id):
-                            continue
-            
-            if(len(win_inputs)<span+1):
-                for i in range(span-len(win_inputs)+1):
-                    ##########################################################
-                    # self.vocab_size-1 is reserved for null type to keep the shape of batch_inputs is (win_len*2,?)
-                    win_inputs.append(self.vocab_size-1)
-                    #########################################################
-            batch_inputs.append(win_inputs)                       #输入词id传入batch中 
+                        if input_id is None:
+                            # if current word does not exist in top 90% frequency vocab_list
+                            # add null id [vocab_size-1]
+                            win_inputs.append(self.vocab_size-1)
+                        else:
+                            win_inputs.append(input_id)
+           
+                if(len(win_inputs)<span+1):
+                    for i in range(span-len(win_inputs)+1):
+                        ##########################################################
+                        # self.vocab_size-1 is reserved for null type to keep the shape of batch_inputs is (win_len*2,?)
+                        win_inputs.append(self.vocab_size-1)
+                        #########################################################
+                batch_inputs.append(win_inputs)                       #输入词id传入batch中 
                 
-        if len(batch_inputs)==0:
-            return
+                if len(batch_inputs)==0:
+                    return
         #使用numpy把行转换为列
         batch_inputs = np.array(batch_inputs,dtype=np.int32).T                #int32因为是id值
         batch_labels = np.array(batch_labels,dtype=np.int32)
@@ -380,7 +390,7 @@ if __name__=='__main__':
     raw_word_list = []
     sentence_list = []
     #Comment_New.txt 'utf-8'
-    with open('Comment_New.txt',encoding='utf-8') as f:
+    with open('10K.txt',encoding='gbk') as f:
         line = f.readline()
         while line:
             #每一行的换行符\n去掉
@@ -431,7 +441,8 @@ if __name__=='__main__':
     #word_count是根据词频排序的词汇表
     #most_common(n)提取最常见的n个词 
     #word_count = word_count.most_common(100)
-    word_count = word_count.most_common(15000)
+    
+    word_count = word_count.most_common(100)
     #word_count.most_common(10)后是一个词对应一个词频
     #word_count变成元祖列表[('哈哈哈', 12),('厉害', 4),(),...]
     #只拿第一维x[0]把单词拿出来
@@ -458,7 +469,7 @@ if __name__=='__main__':
     w2v.save_model('model')
     #保存模型  
     w2v.load_model('model') 
-    test_word = ['北京','冬奥会','中国','冠军','韩国','裁判','犯规','辣鸡']
+    test_word = ['北京']
     test_id = [word_list.index(x) for x in test_word]
     #计算相似度
     test_words,near_words,sim_mean,sim_var = w2v.cal_similarity(test_id)
